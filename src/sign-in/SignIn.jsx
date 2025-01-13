@@ -14,7 +14,6 @@ import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
 import AppTheme from '../shared-theme/AppTheme';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
 import ForgotPassword from './ForgotPassword';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
 
@@ -214,6 +213,18 @@ export default function SignIn(props) {
                 sx={{ alignSelf: 'center' }}
               >
                 Regístrate!
+              </Link>
+            </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Typography sx={{ textAlign: 'center' }}>
+              TEST ENVIROMENT{' '}
+              <Link
+                href="/blog"
+                variant="body2"
+                sx={{ alignSelf: 'center' }}
+              >
+                SUCCESS
               </Link>
             </Typography>
           </Box>

@@ -7,25 +7,16 @@ import ListItemText from '@mui/material/ListItemText';
 import Typography from '@mui/material/Typography';
 
 const products = [
+  /*Comentario para encontrar sectores de tensión rapido*/
   {
-    name: 'Professional plan',
-    desc: 'Monthly subscription',
-    price: '$15.00',
+    name: 'Pasar a nuestro grupo',
+    desc: 'Como detesto esta clase',
+    price: '$50.000',
   },
   {
-    name: 'Dedicated support',
-    desc: 'Included in the Professional plan',
-    price: 'Free',
-  },
-  {
-    name: 'Hardware',
-    desc: 'Devices needed for development',
-    price: '$69.99',
-  },
-  {
-    name: 'Landing page template',
-    desc: 'License',
-    price: '$49.99',
+    name: 'Plan de Apoyo por 1 mes',
+    desc: 'Incluido en la compra',
+    price: 'Gratis',
   },
 ];
 

@@ -17,13 +17,13 @@ export default function AddressForm() {
     <Grid container spacing={3}>
       <FormGrid size={{ xs: 12, md: 6 }}>
         <FormLabel htmlFor="first-name" required>
-          First name
+          Nombre
         </FormLabel>
         <OutlinedInput
           id="first-name"
           name="first-name"
           type="name"
-          placeholder="John"
+          placeholder="Hernando"
           autoComplete="first name"
           required
           size="small"
@@ -31,13 +31,13 @@ export default function AddressForm() {
       </FormGrid>
       <FormGrid size={{ xs: 12, md: 6 }}>
         <FormLabel htmlFor="last-name" required>
-          Last name
+          Apellido
         </FormLabel>
         <OutlinedInput
           id="last-name"
           name="last-name"
           type="last-name"
-          placeholder="Snow"
+          placeholder="Rodriguez"
           autoComplete="last name"
           required
           size="small"
@@ -45,25 +45,25 @@ export default function AddressForm() {
       </FormGrid>
       <FormGrid size={{ xs: 12 }}>
         <FormLabel htmlFor="address1" required>
-          Address line 1
+          Dirección
         </FormLabel>
         <OutlinedInput
           id="address1"
           name="address1"
           type="address1"
-          placeholder="Street name and number"
+          placeholder="Cra. 0 # 0 - 0"
           autoComplete="shipping address-line1"
           required
           size="small"
         />
       </FormGrid>
       <FormGrid size={{ xs: 12 }}>
-        <FormLabel htmlFor="address2">Address line 2</FormLabel>
+        <FormLabel htmlFor="address2">Detalles de Dirección</FormLabel>
         <OutlinedInput
           id="address2"
           name="address2"
           type="address2"
-          placeholder="Apartment, suite, unit, etc. (optional)"
+          placeholder="Etapa 0. Torre 0."
           autoComplete="shipping address-line2"
           required
           size="small"
@@ -71,13 +71,13 @@ export default function AddressForm() {
       </FormGrid>
       <FormGrid size={{ xs: 6 }}>
         <FormLabel htmlFor="city" required>
-          City
+          Ciudad
         </FormLabel>
         <OutlinedInput
           id="city"
           name="city"
           type="city"
-          placeholder="New York"
+          placeholder="Medellin"
           autoComplete="City"
           required
           size="small"
@@ -85,13 +85,13 @@ export default function AddressForm() {
       </FormGrid>
       <FormGrid size={{ xs: 6 }}>
         <FormLabel htmlFor="state" required>
-          State
+          Region
         </FormLabel>
         <OutlinedInput
           id="state"
           name="state"
           type="state"
-          placeholder="NY"
+          placeholder="Antioquia"
           autoComplete="State"
           required
           size="small"
@@ -99,7 +99,7 @@ export default function AddressForm() {
       </FormGrid>
       <FormGrid size={{ xs: 6 }}>
         <FormLabel htmlFor="zip" required>
-          Zip / Postal code
+          Zip / Codigo Postal
         </FormLabel>
         <OutlinedInput
           id="zip"
@@ -113,13 +113,13 @@ export default function AddressForm() {
       </FormGrid>
       <FormGrid size={{ xs: 6 }}>
         <FormLabel htmlFor="country" required>
-          Country
+          Pais
         </FormLabel>
         <OutlinedInput
           id="country"
           name="country"
           type="country"
-          placeholder="United States"
+          placeholder="Colombia"
           autoComplete="shipping country"
           required
           size="small"
@@ -128,7 +128,7 @@ export default function AddressForm() {
       <FormGrid size={{ xs: 12 }}>
         <FormControlLabel
           control={<Checkbox name="saveAddress" value="yes" />}
-          label="Use this address for payment details"
+          label="Utilizar esta dirección como dirección de pago."
         />
       </FormGrid>
     </Grid>

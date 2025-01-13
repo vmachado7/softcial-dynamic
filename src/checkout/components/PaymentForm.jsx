@@ -159,38 +159,7 @@ export default function PaymentForm() {
                     },
                   ]}
                 />
-                <Typography sx={{ fontWeight: 'medium' }}>Card</Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-          <Card selected={paymentType === 'bankTransfer'}>
-            <CardActionArea
-              onClick={() => setPaymentType('bankTransfer')}
-              sx={{
-                '.MuiCardActionArea-focusHighlight': {
-                  backgroundColor: 'transparent',
-                },
-                '&:focus-visible': {
-                  backgroundColor: 'action.hover',
-                },
-              }}
-            >
-              <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <AccountBalanceRoundedIcon
-                  fontSize="small"
-                  sx={[
-                    (theme) => ({
-                      color: 'grey.400',
-                      ...theme.applyStyles('dark', {
-                        color: 'grey.600',
-                      }),
-                    }),
-                    paymentType === 'bankTransfer' && {
-                      color: 'primary.main',
-                    },
-                  ]}
-                />
-                <Typography sx={{ fontWeight: 'medium' }}>Bank account</Typography>
+                <Typography sx={{ fontWeight: 'medium' }}>Tarjeta de Credito</Typography>
               </CardContent>
             </CardActionArea>
           </Card>
@@ -200,7 +169,7 @@ export default function PaymentForm() {
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <PaymentContainer>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Typography variant="subtitle2">Credit card</Typography>
+              <Typography variant="subtitle2">Tarjeta de Credito</Typography>
               <CreditCardRoundedIcon sx={{ color: 'text.secondary' }} />
             </Box>
             <SimCardRoundedIcon
@@ -220,7 +189,7 @@ export default function PaymentForm() {
             >
               <FormGrid sx={{ flexGrow: 1 }}>
                 <FormLabel htmlFor="card-number" required>
-                  Card number
+                  Numero de Tarjeta
                 </FormLabel>
                 <OutlinedInput
                   id="card-number"
@@ -250,19 +219,19 @@ export default function PaymentForm() {
             <Box sx={{ display: 'flex', gap: 2 }}>
               <FormGrid sx={{ flexGrow: 1 }}>
                 <FormLabel htmlFor="card-name" required>
-                  Name
+                  Nombre
                 </FormLabel>
                 <OutlinedInput
                   id="card-name"
                   autoComplete="card-name"
-                  placeholder="John Smith"
+                  placeholder="Hernando Rodriguez"
                   required
                   size="small"
                 />
               </FormGrid>
               <FormGrid sx={{ flexGrow: 1 }}>
                 <FormLabel htmlFor="card-expiration" required>
-                  Expiration date
+                  Fecha de Expiración
                 </FormLabel>
                 <OutlinedInput
                   id="card-expiration"
@@ -278,45 +247,8 @@ export default function PaymentForm() {
           </PaymentContainer>
           <FormControlLabel
             control={<Checkbox name="saveCard" />}
-            label="Remember credit card details for next time"
+            label="Recordar los datos de pago."
           />
-        </Box>
-      )}
-      {paymentType === 'bankTransfer' && (
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <Alert severity="warning" icon={<WarningRoundedIcon />}>
-            Your order will be processed once we receive the funds.
-          </Alert>
-          <Typography variant="subtitle1" sx={{ fontWeight: 'medium' }}>
-            Bank account
-          </Typography>
-          <Typography variant="body1" gutterBottom>
-            Please transfer the payment to the bank account details shown below.
-          </Typography>
-          <Box sx={{ display: 'flex', gap: 1 }}>
-            <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-              Bank:
-            </Typography>
-            <Typography variant="body1" sx={{ fontWeight: 'medium' }}>
-              Mastercredit
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', gap: 1 }}>
-            <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-              Account number:
-            </Typography>
-            <Typography variant="body1" sx={{ fontWeight: 'medium' }}>
-              123456789
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', gap: 1 }}>
-            <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-              Routing number:
-            </Typography>
-            <Typography variant="body1" sx={{ fontWeight: 'medium' }}>
-              987654321
-            </Typography>
-          </Box>
         </Box>
       )}
     </Stack>
