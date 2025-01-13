@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from './sign-up/SignUp';
 import SignIn from './sign-in/SignIn';
 import Checkout from './checkout/Checkout';
-import Blog from './blog/Blog';
+import Blog from './blog/Blog.jsx';
 
 const App = () => (
   <Router>
