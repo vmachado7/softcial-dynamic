@@ -16,6 +16,7 @@ import { styled } from '@mui/material/styles';
 import AppTheme from '../shared-theme/AppTheme';
 import ForgotPassword from './ForgotPassword';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
+import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -205,26 +206,30 @@ export default function SignIn(props) {
           </Box>
           <Divider>o</Divider>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={() => alert('Sign in with Google')}
+              startIcon={<GoogleIcon />}
+            >
+              Sign in with Google
+            </Button>
+            <Button
+              fullWidth
+              variant="outlined"
+              onClick={() => alert('Sign in with Facebook')}
+              startIcon={<FacebookIcon />}
+            >
+              Sign in with Facebook
+            </Button>
             <Typography sx={{ textAlign: 'center' }}>
-              ¿No tienes una cuenta?{' '}
+              Don&apos;t have an account?{' '}
               <Link
-                href="/"
+                href="/material-ui/getting-started/templates/sign-in/"
                 variant="body2"
                 sx={{ alignSelf: 'center' }}
               >
-                Regístrate!
-              </Link>
-            </Typography>
-          </Box>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-            <Typography sx={{ textAlign: 'center' }}>
-              TEST ENVIROMENT{' '}
-              <Link
-                href="/blog"
-                variant="body2"
-                sx={{ alignSelf: 'center' }}
-              >
-                SUCCESS
+                Sign up
               </Link>
             </Typography>
           </Box>
