@@ -20,8 +20,11 @@ import Review from './components/Review';
 import SitemarkIcon from './components/SitemarkIcon';
 import AppTheme from '../shared-theme/AppTheme';
 import ColorModeIconDropdown from '../shared-theme/ColorModeIconDropdown';
+import Link from '@mui/material/Link';
+import { useNavigate } from 'react-router-dom';
+import { Divider } from '@mui/material';
 
-const steps = ['Shipping address', 'Payment details', 'Review your order'];
+const steps = ['Datos del Cliente', 'Información de Pago', 'Su Orden'];
 function getStepContent(step) {
   switch (step) {
     case 0:
@@ -34,6 +37,7 @@ function getStepContent(step) {
       throw new Error('Unknown step');
   }
 }
+
 export default function Checkout(props) {
   const [activeStep, setActiveStep] = React.useState(0);
   const handleNext = () => {
@@ -42,6 +46,11 @@ export default function Checkout(props) {
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+  navigate("/home"); 
+};
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
@@ -86,7 +95,7 @@ export default function Checkout(props) {
               maxWidth: 500,
             }}
           >
-            <Info totalPrice={activeStep >= 2 ? '$144.97' : '$134.98'} />
+            <Info totalPrice={activeStep >= 2 ? '$300.000' : '$50.000'} />
           </Box>
         </Grid>
         <Grid
@@ -193,18 +202,28 @@ export default function Checkout(props) {
             </Stepper>
             {activeStep === steps.length ? (
               <Stack spacing={2} useFlexGap>
-                <Typography variant="h1">📦</Typography>
-                <Typography variant="h5">Thank you for your order!</Typography>
+                <Typography variant="h1">☺</Typography>
+                <Typography variant="h5">Muchas gracias! Tu pago esta siendo procesado!</Typography>
                 <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-                  Your order number is
-                  <strong>&nbsp;#140396</strong>. We have emailed your order
-                  confirmation and will update you once its shipped.
+                  Esto puede tomar hasta 
+                  <strong>&nbsp;2 dias habiles. </strong>
+                    Si tu subscripción aun no ha sido activada despues de este periodo, 
+                   <Link
+                    href="https://t.me/softcial"
+                    variant="body2"
+                    sx={{ alignSelf: 'center' }}
+                  >
+                    <strong>&nbsp;Contáctanos!.</strong>
+                  </Link>                   
                 </Typography>
+                <Divider></Divider>
+                <Typography variant="h5">Tu número de referencia es <strong>&nbsp;11037.</strong></Typography>
                 <Button
                   variant="contained"
                   sx={{ alignSelf: 'start', width: { xs: '100%', sm: 'auto' } }}
+                  onClick={handleClick}
                 >
-                  Go to my orders
+                  Regresar a mi perfil
                 </Button>
               </Stack>
             ) : (
@@ -234,7 +253,7 @@ export default function Checkout(props) {
                       variant="text"
                       sx={{ display: { xs: 'none', sm: 'flex' } }}
                     >
-                      Previous
+                      Anterior
                     </Button>
                   )}
                   {activeStep !== 0 && (
@@ -245,7 +264,7 @@ export default function Checkout(props) {
                       fullWidth
                       sx={{ display: { xs: 'flex', sm: 'none' } }}
                     >
-                      Previous
+                      Anterior
                     </Button>
                   )}
                   <Button
@@ -254,7 +273,7 @@ export default function Checkout(props) {
                     onClick={handleNext}
                     sx={{ width: { xs: '100%', sm: 'fit-content' } }}
                   >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                    {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
                   </Button>
                 </Box>
               </React.Fragment>

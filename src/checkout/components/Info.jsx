@@ -10,7 +10,7 @@ const products = [
   /*Comentario para encontrar sectores de tensión rapido*/
   {
     name: 'Pasar a nuestro grupo',
-    desc: 'Como detesto esta clase',
+    desc: 'Plan de 1 Semestre académico.',
     price: '$50.000',
   },
   {

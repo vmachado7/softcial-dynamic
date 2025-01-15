@@ -57,22 +57,16 @@ export default function AppAppBar() {
             />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
               <Button variant="text" color="info" size="small">
-                Features
+                Mi perfil
               </Button>
               <Button variant="text" color="info" size="small">
-                Testimonials
+                Afiliados
               </Button>
               <Button variant="text" color="info" size="small">
-                Highlights
-              </Button>
-              <Button variant="text" color="info" size="small">
-                Pricing
+                Planes
               </Button>
               <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
                 FAQ
-              </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
-                Blog
               </Button>
             </Box>
           </Box>
@@ -87,7 +81,7 @@ export default function AppAppBar() {
               e.preventDefault();
               window.location.href = '/checkout';
             }}>
-              Mi carrito
+              Mi subscripción
             </Button>
             <ColorModeIconDropdown />
           </Box>
@@ -117,12 +111,10 @@ export default function AppAppBar() {
                     <CloseRoundedIcon />
                   </IconButton>
                 </Box>
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
+                <MenuItem>Mi perfil</MenuItem>
+                <MenuItem>Afiliados</MenuItem>
+                <MenuItem>Planes</MenuItem>
                 <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
                   <Button color="primary" variant="contained" fullWidth>

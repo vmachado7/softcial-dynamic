@@ -13,7 +13,7 @@ export default function Landing() {
                     console.log("Login Success")
                     console.log(credentialResponse)
                     console.log(jwtDecode(credentialResponse.credential))
-                    navigate("/blog")
+                    navigate("/home")
                 }}
                 onError={() => console.log("Login Failed")} />
         </>

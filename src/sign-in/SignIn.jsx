@@ -16,7 +16,12 @@ import { styled } from '@mui/material/styles';
 import AppTheme from '../shared-theme/AppTheme';
 import ForgotPassword from './ForgotPassword';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
+import { GoogleIcon, XIcon} from './CustomIcons';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
+
+
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -61,11 +66,13 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
 }));
 
 export default function SignIn(props) {
+  const [showGoogleLogin, setShowGoogleLogin] = React.useState(false);
   const [emailError, setEmailError] = React.useState(false);
   const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate()
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -114,6 +121,10 @@ export default function SignIn(props) {
     return isValid;
   };
 
+  const handleButtonClick = () => {
+    setShowGoogleLogin(true); // Show GoogleLogin component
+  };
+
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
@@ -147,53 +158,9 @@ export default function SignIn(props) {
               gap: 2,
             }}
           >
-            <FormControl>
-              <FormLabel htmlFor="email">Email</FormLabel>
-              <TextField
-                error={emailError}
-                helperText={emailErrorMessage}
-                id="email"
-                type="email"
-                name="email"
-                placeholder="your@email.com"
-                autoComplete="email"
-                autoFocus
-                required
-                fullWidth
-                variant="outlined"
-                color={emailError ? 'error' : 'primary'}
-              />
-            </FormControl>
-            <FormControl>
-              <FormLabel htmlFor="password">Contraseña</FormLabel>
-              <TextField
-                error={passwordError}
-                helperText={passwordErrorMessage}
-                name="password"
-                placeholder="••••••"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                autoFocus
-                required
-                fullWidth
-                variant="outlined"
-                color={passwordError ? 'error' : 'primary'}
-              />
-            </FormControl>
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Recordar usuario"
-            />
+            <>
+            </>
             <ForgotPassword open={open} handleClose={handleClose} />
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              onClick={validateInputs}
-            >
-              Iniciar Sesión
-            </Button>
             <Link
               component="button"
               type="button"
@@ -201,35 +168,47 @@ export default function SignIn(props) {
               variant="body2"
               sx={{ alignSelf: 'center' }}
             >
-              ¿Olvidaste tu contraseña?
+              ¿Necesitas ayuda?
             </Link>
           </Box>
-          <Divider>o</Divider>
+          <Divider></Divider>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <>
+            
+            </>
             <Button
               fullWidth
               variant="outlined"
-              onClick={() => alert('Sign in with Google')}
               startIcon={<GoogleIcon />}
-            >
-              Sign in with Google
+              onClick={handleButtonClick}>
+              Inicia Sesión con Google
             </Button>
+            {showGoogleLogin &&(
+            <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                    console.log("Login Success")
+                    console.log(credentialResponse)
+                    console.log(jwtDecode(credentialResponse.credential))
+                    navigate("/home")
+                }}
+                onError={() => console.log("Login Failed")} />
+            )}
             <Button
               fullWidth
               variant="outlined"
               onClick={() => alert('Sign in with Facebook')}
-              startIcon={<FacebookIcon />}
+              startIcon={<XIcon />}
             >
-              Sign in with Facebook
+              Inicia Sesión con Twitter
             </Button>
             <Typography sx={{ textAlign: 'center' }}>
-              Don&apos;t have an account?{' '}
+              ¿No tienes una cuenta?{' '}
               <Link
-                href="/material-ui/getting-started/templates/sign-in/"
+                href="/sign-up"
                 variant="body2"
                 sx={{ alignSelf: 'center' }}
               >
-                Sign up
+                Registrate!
               </Link>
             </Typography>
           </Box>

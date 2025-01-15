@@ -22,12 +22,13 @@ function ForgotPassword({ open, handleClose }) {
         sx: { backgroundImage: 'none' },
       }}
     >
-      <DialogTitle>Reestablecer Contraseña</DialogTitle>
+      <DialogTitle>Reestablecer Usuario</DialogTitle>
       <DialogContent
         sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%' }}
       >
         <DialogContentText>
-          Ingresa el correo con el cual creaste tu cuenta, enviaremos un enlace para reestablecer tu contraseña.
+          Si al ingresar con google o twitter no se ven reflejados los datos de tu cuenta, por favor, danos tu correo y nos pondremos
+          en contacto para seguir tu caso.
         </DialogContentText>
         <OutlinedInput
           autoFocus

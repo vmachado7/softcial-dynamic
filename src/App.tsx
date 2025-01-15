@@ -9,10 +9,11 @@ import Landing from './sign-in/landing.jsx';
 const App = () => (
   <Router>
     <Routes>
-      <Route path="/" element={<Landing />} />
+      <Route path="/" element={<SignIn />} />
       <Route path="/sign-in" element={<SignIn />} />
+      <Route path="/sign-up" element={<SignUp />} />
       <Route path="/checkout" element={<Checkout />} />
-      <Route path="/blog" element={<Blog />} />
+      <Route path="/home" element={<Blog />} />
       <Route path="/landing" element={<Landing />} />
     </Routes>
   </Router>

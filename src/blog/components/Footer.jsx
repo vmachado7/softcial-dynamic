@@ -58,16 +58,15 @@ export default function Footer() {
             }}
           >
             <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
-              <SitemarkIcon />
               <Typography
                 variant="body2"
                 gutterBottom
                 sx={{ fontWeight: 600, mt: 2 }}
               >
-                Join the newsletter
+                Únete a nuestra lista de correos.
               </Typography>
               <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
-                Subscribe for weekly updates. No spams ever!
+                Subscribete para recibir noticias del desarrollo de nuestras tecnologias!
               </Typography>
               <InputLabel htmlFor="email-newsletter">Email</InputLabel>
               <Stack direction="row" spacing={1} useFlexGap>
@@ -77,8 +76,8 @@ export default function Footer() {
                   size="small"
                   variant="outlined"
                   fullWidth
-                  aria-label="Enter your email address"
-                  placeholder="Your email address"
+                  aria-label="Tu dirección de correo."
+                  placeholder="Tu dirección de correo."
                   slotProps={{
                     htmlInput: {
                       autoComplete: 'off',
@@ -93,7 +92,7 @@ export default function Footer() {
                   size="small"
                   sx={{ flexShrink: 0 }}
                 >
-                  Subscribe
+                  Subscribirse
                 </Button>
               </Stack>
             </Box>

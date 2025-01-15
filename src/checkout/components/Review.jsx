@@ -10,24 +10,28 @@ import Typography from '@mui/material/Typography';
 
 const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
 const payments = [
-  { name: 'Card type:', detail: 'Visa' },
-  { name: 'Card holder:', detail: 'Mr. John Smith' },
-  { name: 'Card number:', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date:', detail: '04/2024' },
+  { name: 'Tarjeta:', detail: 'Visa' },
+  { name: 'Nombre:', detail: 'Hernando Rodriguez' },
+  { name: 'Numero:', detail: 'xxxx-xxxx-xxxx-1234' },
+  { name: 'Expiración:', detail: '03/2025' },
 ];
 
 export default function Review() {
   return (
     <Stack spacing={2}>
       <List disablePadding>
-        <ListItem sx={{ py: 1, px: 0 }}>
-          <ListItemText primary="Products" secondary="4 selected" />
+      <ListItem sx={{ py: 1, px: 0 }}>
+          <ListItemText primary="Plan de Subscripción seleccionado" secondary="4 meses" />
           <Typography variant="body2">$50.000</Typography>
+        </ListItem>
+        <ListItem sx={{ py: 1, px: 0 }}>
+          <ListItemText primary="Aporte solidario" secondary="Gracias" />
+          <Typography variant="body2">$250.000</Typography>
         </ListItem>
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $50.069
+            $300.000
           </Typography>
         </ListItem>
       </List>
@@ -40,16 +44,16 @@ export default function Review() {
       >
         <div>
           <Typography variant="subtitle2" gutterBottom>
-            Shipment details
+            Detalles del usuario
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
+          <Typography gutterBottom>Hernando Rodriguez</Typography>
           <Typography gutterBottom sx={{ color: 'text.secondary' }}>
             {addresses.join(', ')}
           </Typography>
         </div>
         <div>
           <Typography variant="subtitle2" gutterBottom>
-            Payment details
+            Detalles de pago
           </Typography>
           <Grid container>
             {payments.map((payment) => (
