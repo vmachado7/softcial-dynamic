@@ -11,7 +11,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import Sitemark from './SitemarkIcon';
 import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -53,19 +52,19 @@ export default function AppAppBar() {
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
             <img
               src="https://montenegrodanielfelipe.com/softcial/svg/softcial.svg"
-              style={{ width: '40px', height: 'auto' }} // Puedes ajustar el tamaño de la imagen aquí
+              style={{ width: '40px', height: 'auto' }} 
             />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant="text" color="info" size="small">
+              <Button variant="text" color="info" size="small"
+              onClick={(e) => {e.preventDefault();window.location.href = '/profile';}}>
                 Mi perfil
               </Button>
-              <Button variant="text" color="info" size="small">
-                Afiliados
-              </Button>
-              <Button variant="text" color="info" size="small">
+              <Button variant="text" color="info" size="small"
+              onClick={(e) => {e.preventDefault();window.location.href = '/plans';}}>
                 Planes
               </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
+              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}
+                onClick={() => window.open("https://montenegrodanielfelipe.com/softcial/terms-and-conditions/", "_blank")}>
                 FAQ
               </Button>
             </Box>
@@ -77,10 +76,8 @@ export default function AppAppBar() {
               alignItems: 'center',
             }}
           >
-            <Button color="primary" variant="contained" size="small" onClick={(e) => {
-              e.preventDefault();
-              window.location.href = '/checkout';
-            }}>
+            <Button color="primary" variant="contained" size="small"
+            onClick={(e) => {e.preventDefault();window.location.href = '/checkout';}}>
               Mi subscripción
             </Button>
             <ColorModeIconDropdown />
@@ -105,27 +102,14 @@ export default function AppAppBar() {
                   sx={{
                     display: 'flex',
                     justifyContent: 'flex-end',
-                  }}
-                >
+                  }}>
                   <IconButton onClick={toggleDrawer(false)}>
                     <CloseRoundedIcon />
                   </IconButton>
                 </Box>
                 <MenuItem>Mi perfil</MenuItem>
-                <MenuItem>Afiliados</MenuItem>
                 <MenuItem>Planes</MenuItem>
                 <MenuItem>FAQ</MenuItem>
-                <Divider sx={{ my: 3 }} />
-                <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth>
-                    Sign up
-                  </Button>
-                </MenuItem>
-                <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth>
-                    Sign in
-                  </Button>
-                </MenuItem>
               </Box>
             </Drawer>
           </Box>

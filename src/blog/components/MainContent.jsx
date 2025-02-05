@@ -19,24 +19,30 @@ import RssFeedRoundedIcon from '@mui/icons-material/RssFeedRounded';
 
 const cardData = [
   {
-    img: 'https://picsum.photos/800/450?random=1',
-    tag: 'Engineering',
-    title: 'Revolutionizing software development with cutting-edge tools',
+    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Vaush.jpg/1200px-Vaush.jpg',
+    tag: 'Streamer - Izquierda',
+    title: '"Vaush" - Ian Anthony Kochinski',
     description:
-      'Our latest engineering tools are designed to streamline workflows and boost productivity. Discover how these innovations are transforming the software development landscape.',
+      'An American left-wing YouTuber and former Twitch streamer. Kochinski started his online career.',
     authors: [
-      { name: 'Remy Sharp', avatar: '/static/images/avatar/1.jpg' },
-      { name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' },
+      { name: 'Twitch', avatar: 'https://img.freepik.com/vector-premium/logotipo-contraccion_578229-259.jpg?semt=ais_hybrid' },
+      { name: 'Youtube', avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png'},
+      { name: 'X' , avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/1690643591twitter-x-logo-png.webp/1024px-1690643591twitter-x-logo-png.webp.png'},      
     ],
   },
+  
   {
-    img: 'https://picsum.photos/800/450?random=2',
-    tag: 'Product',
-    title: 'Innovative product features that drive success',
-    description:
-      'Explore the key features of our latest product release that are helping businesses achieve their goals. From user-friendly interfaces to robust functionality, learn why our product stands out.',
-    authors: [{ name: 'Erica Johns', avatar: '/static/images/avatar/6.jpg' }],
-  },
+    img: 'https://pbs.twimg.com/profile_images/1882891121203773440/3RZ5SId__400x400.jpg',
+        tag: 'Tiktoker- Izquierda',
+        title: '@imrickytalavera- Ricardo Talaverai',
+        description:
+          'Tiktoker Puerto Riquenos con enfoque en politica local e internacional.',
+        authors: [
+          { name: 'Tikok', avatar: 'https://thumbs.dreamstime.com/b/tiktok-social-media-app-icon-tiktok-social-media-app-icon-square-shape-vector-illustration-269930887.jpg'},
+          { name: 'X' },
+          { name: 'Youtube'}
+        ],
+      },
   {
     img: 'https://picsum.photos/800/450?random=3',
     tag: 'Design',
@@ -193,9 +199,11 @@ export default function MainContent() {
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
       <div>
         <Typography variant="h1" gutterBottom>
-          Panel de Control
+          Nuestros afiliados
         </Typography>
-        <Typography>Aqui podras ver el desempeño de tus patrocinios!</Typography>
+        <Typography>Obten información acerca de nuestros afiliados, y selecciona con cuantos estas interesado en formar 
+          una nueva campaña!
+        </Typography>
       </div>
       <Box
         sx={{

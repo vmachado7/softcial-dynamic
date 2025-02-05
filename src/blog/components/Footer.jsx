@@ -195,7 +195,7 @@ export default function Footer() {
             <IconButton
               color="inherit"
               size="small"
-              href="https://github.com/mui"
+              href="https://github.com/vmachado7/softcial-dynamic"
               aria-label="GitHub"
               sx={{ alignSelf: 'center' }}
             >

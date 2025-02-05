@@ -14,8 +14,8 @@ import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
 import AppTheme from '../shared-theme/AppTheme';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from './CustomIcons';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
+import { GoogleLogin } from '@react-oauth/google';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -201,9 +201,16 @@ export default function SignUp(props) {
             </Button>
           </Box>
           <Divider>
-            <Typography sx={{ color: 'text.secondary' }}>or</Typography>
           </Divider>
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+          <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
+          <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                    console.log("Login Success")
+                    console.log(credentialResponse)
+                    console.log(jwtDecode(credentialResponse.credential))
+                    navigate("/home")
+                }}
+                onError={() => console.log("Login Failed")} />
             <Typography sx={{ textAlign: 'center' }}>
               ¿Ya tienes una cuenta?{' '}
               <Link

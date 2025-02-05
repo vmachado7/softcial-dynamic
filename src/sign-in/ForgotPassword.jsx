@@ -27,8 +27,7 @@ function ForgotPassword({ open, handleClose }) {
         sx={{ display: 'flex', flexDirection: 'column', gap: 2, width: '100%' }}
       >
         <DialogContentText>
-          Si al ingresar con google o twitter no se ven reflejados los datos de tu cuenta, por favor, danos tu correo y nos pondremos
-          en contacto para seguir tu caso.
+          Si haz olvidado tu cuenta ingresa tu correo para re-establecer tu contraseña.
         </DialogContentText>
         <OutlinedInput
           autoFocus
