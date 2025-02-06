@@ -15,99 +15,44 @@ const FormGrid = styled(Grid)(() => ({
 export default function AddressForm() {
   return (
     <Grid container spacing={3}>
-      <FormGrid size={{ xs: 12, md: 6 }}>
-        <FormLabel htmlFor="first-name" required>
-          Nombre
-        </FormLabel>
-        <OutlinedInput
-          id="first-name"
-          name="first-name"
-          type="name"
-          placeholder="Hernando"
-          autoComplete="first name"
-          required
-          size="small"
-        />
-      </FormGrid>
-      <FormGrid size={{ xs: 12, md: 6 }}>
-        <FormLabel htmlFor="last-name" required>
-          Apellido
-        </FormLabel>
-        <OutlinedInput
-          id="last-name"
-          name="last-name"
-          type="last-name"
-          placeholder="Rodriguez"
-          autoComplete="last name"
-          required
-          size="small"
-        />
-      </FormGrid>
       <FormGrid size={{ xs: 12 }}>
-        <FormLabel htmlFor="address1" required>
-          Dirección
-        </FormLabel>
+        <FormLabel htmlFor="address1" required>Tendencia #1</FormLabel>
         <OutlinedInput
           id="address1"
-          name="address1"
-          type="address1"
-          placeholder="Cra. 0 # 0 - 0"
-          autoComplete="shipping address-line1"
+          placeholder="Precio del gas natural"
           required
           size="small"
         />
       </FormGrid>
       <FormGrid size={{ xs: 12 }}>
-        <FormLabel htmlFor="address2">Detalles de Dirección</FormLabel>
+        <FormLabel htmlFor="address2">Tendencia #2</FormLabel>
         <OutlinedInput
           id="address2"
-          name="address2"
-          type="address2"
-          placeholder="Etapa 0. Torre 0."
-          autoComplete="shipping address-line2"
-          required
+          placeholder="Precio del Oro"
           size="small"
         />
       </FormGrid>
-      <FormGrid size={{ xs: 6 }}>
-        <FormLabel htmlFor="city" required>
-          Ciudad
-        </FormLabel>
+      <FormGrid size={{ xs: 12 }}>
+        <FormLabel htmlFor="address2">Tendencia #3</FormLabel>
         <OutlinedInput
-          id="city"
-          name="city"
-          type="city"
-          placeholder="Medellin"
-          autoComplete="City"
-          required
+          id="address2"
+          placeholder="Precio de las esmeraldas"
           size="small"
         />
       </FormGrid>
-      <FormGrid size={{ xs: 6 }}>
-        <FormLabel htmlFor="state" required>
-          Region
-        </FormLabel>
+      <FormGrid size={{ xs: 12 }}>
+        <FormLabel htmlFor="address2">Tendencia #4</FormLabel>
         <OutlinedInput
-          id="state"
-          name="state"
-          type="state"
-          placeholder="Antioquia"
-          autoComplete="State"
-          required
+          id="address2"
+          placeholder="Opinion del ministerio de defensa"
           size="small"
         />
       </FormGrid>
-      <FormGrid size={{ xs: 6 }}>
-        <FormLabel htmlFor="zip" required>
-          Zip / Codigo Postal
-        </FormLabel>
+      <FormGrid size={{ xs: 12 }}>
+        <FormLabel htmlFor="address2">Tendencia #5</FormLabel>
         <OutlinedInput
-          id="zip"
-          name="zip"
-          type="zip"
-          placeholder="12345"
-          autoComplete="shipping postal-code"
-          required
+          id="address2"
+          placeholder="Stock de Space X"
           size="small"
         />
       </FormGrid>
@@ -123,12 +68,6 @@ export default function AddressForm() {
           autoComplete="shipping country"
           required
           size="small"
-        />
-      </FormGrid>
-      <FormGrid size={{ xs: 12 }}>
-        <FormControlLabel
-          control={<Checkbox name="saveAddress" value="yes" />}
-          label="Utilizar esta dirección como dirección de pago."
         />
       </FormGrid>
     </Grid>

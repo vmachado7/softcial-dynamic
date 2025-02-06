@@ -6,17 +6,20 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import FacebookIcon from '@mui/icons-material/GitHub';
 import Typography from '@mui/material/Typography';
+import Divider from '@mui/material/Divider';
 
 export default function Footer() {
   return (
+    
     <React.Fragment>
+      <Divider></Divider>
       <Container
         sx={{
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: { xs: 4, sm: 8 },
-          py: { xs: 8, sm: 10 },
+          gap: { xs: 2, sm: 0},
+          py: { xs: 2, sm: 2 },
           textAlign: { sm: 'center', md: 'left' },
         }}
       >
@@ -32,22 +35,9 @@ export default function Footer() {
             sx={{
               display: 'flex',
               flexDirection: 'column',
-              gap: 4,
               minWidth: { xs: '100%', sm: '60%' },
             }}
           >
-            <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
-              <Typography
-                variant="body2"
-                gutterBottom
-                sx={{ fontWeight: 600, mt: 2 }}
-              >
-                Únete a nuestra lista de correos.
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
-                Subscribete para recibir noticias del desarrollo de nuestras tecnologias!
-              </Typography>
-            </Box>
           </Box>
           <Box
             sx={{
@@ -57,7 +47,7 @@ export default function Footer() {
             }}
           >
             <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-              Service
+              Servicio
             </Typography>
             <Link color="text.secondary" variant="body2" href="#">
               FAQs
@@ -71,10 +61,10 @@ export default function Footer() {
             }}
           >
             <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-              Company
+              Proyecto
             </Typography>
             <Link color="text.secondary" variant="body2" href="/Aboutus">
-              About us
+              Sobre Nosotros
             </Link>
           </Box>
           <Box
@@ -88,31 +78,15 @@ export default function Footer() {
               Legal
             </Typography>
             <Link color="text.secondary" variant="body2" href="/Terms">
-              Terms
+              Terminos y Condiciones
             </Link>
             <Link color="text.secondary" variant="body2" href="/Privacy">
-              Privacy
+              Política de Privacidad
             </Link>
             <Link color="text.secondary" variant="body2" href="#">
-              Contact
+              Contactanos
             </Link>
           </Box>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            pt: { xs: 4, sm: 8 },
-            width: '100%',
-            borderTop: '1px solid',
-            borderColor: 'divider',
-          }}
-        >
-          <div>
-            <Link color="text.secondary" variant="body2" href="#">
-              Terminos de Uso
-            </Link>
-          </div>
           <Stack
             direction="row"
             spacing={1}

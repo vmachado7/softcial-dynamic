@@ -24,7 +24,7 @@ import Link from '@mui/material/Link';
 import { useNavigate } from 'react-router-dom';
 import { Divider } from '@mui/material';
 
-const steps = ['Datos del Cliente', 'Información de Pago', 'Su Orden'];
+const steps = ['Tendencias a Reportar', 'Información de Pago', 'Su Orden'];
 function getStepContent(step) {
   switch (step) {
     case 0:

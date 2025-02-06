@@ -1,187 +1,196 @@
-import React from 'react';
-import {MDBCol,MDBContainer,MDBRow,MDBCard,MDBCardText,MDBCardBody,MDBCardImage,MDBBtn,MDBBreadcrumb,MDBBreadcrumbItem,MDBProgress,MDBProgressBar,MDBIcon,MDBListGroup,MDBListGroupItem} from 'mdb-react-ui-kit';
-export default function ProfilePage() {
+import * as React from 'react';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import Divider from '@mui/material/Divider';
+import FormControl from '@mui/material/FormControl';
+import FormLabel from '@mui/material/FormLabel';
+import Link from '@mui/material/Link';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Stack from '@mui/material/Stack';
+import MuiCard from '@mui/material/Card';
+import { styled } from '@mui/material/styles';
+import AppTheme from '../shared-theme/AppTheme';
+import ColorModeSelect from '../shared-theme/ColorModeSelect';
+
+const Card = styled(MuiCard)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  alignSelf: 'center',
+  width: '100%',
+  padding: theme.spacing(4),
+  gap: theme.spacing(2),
+  margin: 'auto',
+  [theme.breakpoints.up('sm')]: {
+    width: '450px',
+  },
+  boxShadow:
+    'hsla(220, 30%, 5%, 0.05) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.05) 0px 15px 35px -5px',
+
+  ...theme.applyStyles('dark', {
+    boxShadow:
+      'hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px',
+  }),
+}));
+
+const ProfileContainer = styled(Stack)(({ theme }) => ({
+  height: '100vh', // Full height of the window
+  width: '100%', // Full width
+  padding: theme.spacing(2),
+  display: 'flex',
+  position: 'absolute',
+  alignItems: 'center', // Center vertically
+  top: '0px',    // This worked for me to center it, don't remove it
+  left: '0px', 
+  justifyContent: 'center', // Center horizontally
+  padding: theme.spacing(2),
+  [theme.breakpoints.up('sm')]: {
+    padding: theme.spacing(4),
+  },
+  '&::before': {
+    content: '""',
+    display: 'block',
+    position: 'absolute',
+    zIndex: -1,
+    inset: 0,
+    backgroundImage:
+      'radial-gradient(ellipse at 50% 50%, hsl(210, 100%, 97%), hsl(0, 0%, 100%))',
+    backgroundRepeat: 'no-repeat',
+    ...theme.applyStyles('dark', {
+      backgroundImage:
+        'radial-gradient(at 50% 50%, hsla(210, 100%, 16%, 0.5), hsl(220, 30%, 5%))',
+    }),
+  },
+}));
+
+export default function UserProfile(props) {
+  const [emailError, setEmailError] = React.useState(false);
+  const [emailErrorMessage, setEmailErrorMessage] = React.useState('');
+  const [nameError, setNameError] = React.useState(false);
+  const [nameErrorMessage, setNameErrorMessage] = React.useState('');
+
+  const validateInputs = () => {
+    const email = document.getElementById('email');
+    const name = document.getElementById('name');
+
+    let isValid = true;
+
+    if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
+      setEmailError(true);
+      setEmailErrorMessage('Please enter a valid email address.');
+      isValid = false;
+    } else {
+      setEmailError(false);
+      setEmailErrorMessage('');
+    }
+
+    if (!name.value || name.value.length < 1) {
+      setNameError(true);
+      setNameErrorMessage('Name is required.');
+      isValid = false;
+    } else {
+      setNameError(false);
+      setNameErrorMessage('');
+    }
+
+    return isValid;
+  };
+
+  const handleSubmit = (event) => {
+    if (nameError || emailError) {
+      event.preventDefault();
+      return;
+    }
+    const data = new FormData(event.currentTarget);
+    console.log({
+      name: data.get('name'),
+      email: data.get('email'),
+    });
+  };
+
   return (
-    <section style={{ backgroundColor: '#eee' }}>
-      <MDBContainer className="py-5">
-        <MDBRow>
-          <MDBCol>
-            <MDBBreadcrumb className="bg-light rounded-3 p-3 mb-4">
-              <MDBBreadcrumbItem>
-                <a href='#'>Home</a>
-              </MDBBreadcrumbItem>
-              <MDBBreadcrumbItem>
-                <a href="#">User</a>
-              </MDBBreadcrumbItem>
-              <MDBBreadcrumbItem active>User Profile</MDBBreadcrumbItem>
-            </MDBBreadcrumb>
-          </MDBCol>
-        </MDBRow>
+    <AppTheme {...props}>
+      <CssBaseline enableColorScheme />
+      
+      <ProfileContainer direction="column" justifyContent="space-between">
+      <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
+        <Card variant="outlined">
 
-        <MDBRow>
-          <MDBCol lg="4">
-            <MDBCard className="mb-4">
-              <MDBCardBody className="text-center">
-                <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp"
-                  alt="avatar"
-                  className="rounded-circle"
-                  style={{ width: '150px' }}
-                  fluid />
-                <p className="text-muted mb-1">Full Stack Developer</p>
-                <p className="text-muted mb-4">Bay Area, San Francisco, CA</p>
-                <div className="d-flex justify-content-center mb-2">
-                  <MDBBtn>Follow</MDBBtn>
-                  <MDBBtn outline className="ms-1">Message</MDBBtn>
-                </div>
-              </MDBCardBody>
-            </MDBCard>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
 
-            <MDBCard className="mb-4 mb-lg-0">
-              <MDBCardBody className="p-0">
-                <MDBListGroup flush className="rounded-3">
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fas icon="globe fa-lg text-warning" />
-                    <MDBCardText>https://mdbootstrap.com</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="github fa-lg" style={{ color: '#333333' }} />
-                    <MDBCardText>mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="twitter fa-lg" style={{ color: '#55acee' }} />
-                    <MDBCardText>@mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="instagram fa-lg" style={{ color: '#ac2bac' }} />
-                    <MDBCardText>mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                  <MDBListGroupItem className="d-flex justify-content-between align-items-center p-3">
-                    <MDBIcon fab icon="facebook fa-lg" style={{ color: '#3b5998' }} />
-                    <MDBCardText>mdbootstrap</MDBCardText>
-                  </MDBListGroupItem>
-                </MDBListGroup>
-              </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
-          <MDBCol lg="8">
-            <MDBCard className="mb-4">
-              <MDBCardBody>
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Full Name</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Johnatan Smith</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Email</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">example@example.com</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Phone</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">(097) 234-5678</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Mobile</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">(098) 765-4321</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-                <hr />
-                <MDBRow>
-                  <MDBCol sm="3">
-                    <MDBCardText>Address</MDBCardText>
-                  </MDBCol>
-                  <MDBCol sm="9">
-                    <MDBCardText className="text-muted">Bay Area, San Francisco, CA</MDBCardText>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCardBody>
-            </MDBCard>
+            <Typography
+              component="h1"
+              variant="h4"
+              sx={{ width: 'auto', fontSize: 'clamp(2rem, 10vw, 2.15rem)' }}
+            >
+              Perfil de Usuario
+            </Typography>
 
-            <MDBRow>
-              <MDBCol md="6">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>
-                    <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</MDBCardText>
-                    <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Web Design</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={80} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Website Markup</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={72} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>One Page</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={89} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Mobile Template</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={55} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Backend API</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={66} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-
-              <MDBCol md="6">
-                <MDBCard className="mb-4 mb-md-0">
-                  <MDBCardBody>
-                    <MDBCardText className="mb-4"><span className="text-primary font-italic me-1">assigment</span> Project Status</MDBCardText>
-                    <MDBCardText className="mb-1" style={{ fontSize: '.77rem' }}>Web Design</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={80} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Website Markup</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={72} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>One Page</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={89} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Mobile Template</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={55} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-
-                    <MDBCardText className="mt-4 mb-1" style={{ fontSize: '.77rem' }}>Backend API</MDBCardText>
-                    <MDBProgress className="rounded">
-                      <MDBProgressBar width={66} valuemin={0} valuemax={100} />
-                    </MDBProgress>
-                  </MDBCardBody>
-                </MDBCard>
-              </MDBCol>
-            </MDBRow>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-    </section>
+            <img
+              src="https://montenegrodanielfelipe.com/softcial/svg/softcial.svg"
+              style={{ width: '100px', height: 'auto' }} // You can adjust the image size here
+            />
+          </Box>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
+          >
+            <FormControl>
+              <FormLabel htmlFor="name">Nombre Completo</FormLabel>
+              <TextField
+                autoComplete="name"
+                name="name"
+                required
+                fullWidth
+                id="name"
+                placeholder="Hernando Rodriguez"
+                error={nameError}
+                helperText={nameErrorMessage}
+                color={nameError ? 'error' : 'primary'}
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel htmlFor="email">Email</FormLabel>
+              <TextField
+                required
+                fullWidth
+                id="email"
+                placeholder="your@email.com"
+                name="email"
+                autoComplete="email"
+                variant="outlined"
+                error={emailError}
+                helperText={emailErrorMessage}
+                color={emailError ? 'error' : 'primary'}
+              />
+            </FormControl>
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              onClick={validateInputs}
+            >
+              Actualizar Perfil
+            </Button>
+          </Box>
+          <Divider>
+          </Divider>
+          <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
+            <Typography sx={{ textAlign: 'center' }}>
+              ¿Necesitas cambiar tu contraseña?{' '}
+              <Link
+                href="/change-password"
+                variant="body2"
+                sx={{ alignSelf: 'center' }}
+              >
+                Cambiar Contraseña
+              </Link>
+            </Typography>
+          </Box>
+        </Card>
+      </ProfileContainer>
+    </AppTheme>
   );
 }

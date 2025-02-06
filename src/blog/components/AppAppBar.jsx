@@ -61,11 +61,7 @@ export default function AppAppBar() {
               </Button>
               <Button variant="text" color="info" size="small"
               onClick={(e) => {e.preventDefault();window.location.href = '/plans';}}>
-                Planes
-              </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}
-                onClick={() => window.open("https://montenegrodanielfelipe.com/softcial/terms-and-conditions/", "_blank")}>
-                FAQ
+                Mi Plan
               </Button>
             </Box>
           </Box>
@@ -78,7 +74,7 @@ export default function AppAppBar() {
           >
             <Button color="primary" variant="contained" size="small"
             onClick={(e) => {e.preventDefault();window.location.href = '/checkout';}}>
-              Mi subscripción
+              Nuevo Reporte
             </Button>
             <ColorModeIconDropdown />
           </Box>
