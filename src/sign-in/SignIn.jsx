@@ -1,39 +1,39 @@
 import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Checkbox from '@mui/material/Checkbox';
+import Stack from '@mui/material/Stack';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import FormLabel from '@mui/material/FormLabel';
-import FormControl from '@mui/material/FormControl';
+
+import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
-import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
+
 import { styled } from '@mui/material/styles';
 import AppTheme from '../shared-theme/AppTheme';
 import ForgotPassword from './ForgotPassword';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
+import { GoogleIcon, XIcon } from './CustomIcons';
+
 import { GoogleLogin } from '@react-oauth/google';
 import { jwtDecode } from 'jwt-decode';
-import { useNavigate } from 'react-router-dom';
 
-
+import FormControlLabel from '@mui/material/FormControlLabel';
+import FormLabel from '@mui/material/FormLabel';
+import FormControl from '@mui/material/FormControl';
+import TextField from '@mui/material/TextField';
+import Checkbox from '@mui/material/Checkbox';
 
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
-  alignSelf: 'center',
-  width: '100%',
-  padding: theme.spacing(4),
+  width: '90%',            // Ancho relativo para móviles
+  maxWidth: '450px',       // Ancho máximo para desktop
+  padding: theme.spacing(3),
   gap: theme.spacing(2),
-  margin: 'auto',
-  [theme.breakpoints.up('sm')]: {
-    width: '450px',
-  },
   boxShadow:
     'hsla(220, 30%, 5%, 0.05) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.05) 0px 15px 35px -5px',
   ...theme.applyStyles('dark', {
@@ -43,12 +43,15 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 const SignInContainer = styled(Stack)(({ theme }) => ({
-  height: 'calc((1 - var(--template-frame-height, 0)) * 100dvh)',
-  minHeight: '100%',
+  height: '100vh', // Altura completa de la ventana
+  width: '100%', // Ancho completo
   padding: theme.spacing(2),
-  [theme.breakpoints.up('sm')]: {
-    padding: theme.spacing(4),
-  },
+  display: 'flex',
+  position: 'absolute',
+  alignItems: 'center', // Centra verticalmente
+  justifyContent: 'center', // Centra horizontalmente
+  top: '0px',    //Esto me funcionó para centrarlo, no lo quiten 
+  left: '0px',  
   '&::before': {
     content: '""',
     display: 'block',
@@ -71,7 +74,9 @@ export default function SignIn(props) {
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [open, setOpen] = React.useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -121,12 +126,10 @@ export default function SignIn(props) {
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
-      <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
       <SignInContainer direction="column" justifyContent="space-between">
+      <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
         <Card variant="outlined">
-
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-
             <Typography
               component="h1"
               variant="h4"
@@ -134,10 +137,9 @@ export default function SignIn(props) {
             >
               Iniciar Sesión
             </Typography>
-
             <img
               src="https://montenegrodanielfelipe.com/softcial/svg/softcial.svg"
-              style={{ width: '100px', height: 'auto' }} // Puedes ajustar el tamaño de la imagen aquí
+              style={{ width: '100px', height: 'auto' }}
             />
           </Box>
           <Box
@@ -207,6 +209,7 @@ export default function SignIn(props) {
             >
               ¿Necesitas ayuda?
             </Link>
+            <ForgotPassword open={open} handleClose={handleClose} />
           </Box>
           <Divider></Divider>
           <Box sx={{ display: 'flex', gap: 2 }}>
@@ -214,10 +217,10 @@ export default function SignIn(props) {
             </>
             <GoogleLogin
                 onSuccess={(credentialResponse) => {
-                    console.log("Login Success")
-                    console.log(credentialResponse)
-                    console.log(jwtDecode(credentialResponse.credential))
-                    navigate("/home")
+                  console.log("Login Success");
+                  console.log(credentialResponse);
+                  console.log(jwtDecode(credentialResponse.credential));
+                  navigate("/home");
                 }}
                 onError={() => console.log("Login Failed")} />
             <Typography sx={{ textAlign: 'center' }}>

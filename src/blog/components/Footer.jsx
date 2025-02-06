@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import FacebookIcon from '@mui/icons-material/GitHub';
+import Typography from '@mui/material/Typography';
 
 export default function Footer() {
   return (
@@ -19,6 +20,84 @@ export default function Footer() {
           textAlign: { sm: 'center', md: 'left' },
         }}
       >
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: { xs: 'column', sm: 'row' },
+            width: '100%',
+            justifyContent: 'space-between',
+          }}
+        >
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: 4,
+              minWidth: { xs: '100%', sm: '60%' },
+            }}
+          >
+            <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
+              <Typography
+                variant="body2"
+                gutterBottom
+                sx={{ fontWeight: 600, mt: 2 }}
+              >
+                Únete a nuestra lista de correos.
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
+                Subscribete para recibir noticias del desarrollo de nuestras tecnologias!
+              </Typography>
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: { xs: 'none', sm: 'flex' },
+              flexDirection: 'column',
+              gap: 1,
+            }}
+          >
+            <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
+              Service
+            </Typography>
+            <Link color="text.secondary" variant="body2" href="#">
+              FAQs
+            </Link>
+          </Box>
+          <Box
+            sx={{
+              display: { xs: 'none', sm: 'flex' },
+              flexDirection: 'column',
+              gap: 1,
+            }}
+          >
+            <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
+              Company
+            </Typography>
+            <Link color="text.secondary" variant="body2" href="/Aboutus">
+              About us
+            </Link>
+          </Box>
+          <Box
+            sx={{
+              display: { xs: 'none', sm: 'flex' },
+              flexDirection: 'column',
+              gap: 1,
+            }}
+          >
+            <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
+              Legal
+            </Typography>
+            <Link color="text.secondary" variant="body2" href="/Terms">
+              Terms
+            </Link>
+            <Link color="text.secondary" variant="body2" href="/Privacy">
+              Privacy
+            </Link>
+            <Link color="text.secondary" variant="body2" href="#">
+              Contact
+            </Link>
+          </Box>
+        </Box>
         <Box
           sx={{
             display: 'flex',

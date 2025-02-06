@@ -38,8 +38,15 @@ const Card = styled(MuiCard)(({ theme }) => ({
 }));
 
 const SignUpContainer = styled(Stack)(({ theme }) => ({
-  height: 'calc((1 - var(--template-frame-height, 0)) * 100dvh)',
-  minHeight: '100%',
+  height: '100vh', // Altura completa de la ventana
+  width: '100%', // Ancho completo
+  padding: theme.spacing(2),
+  display: 'flex',
+  position: 'absolute',
+  alignItems: 'center', // Centra verticalmente
+  top: '0px',    //Esto me funcionó para centrarlo, no lo quiten 
+  left: '0px', 
+  justifyContent: 'center', // Centra horizontalmente
   padding: theme.spacing(2),
   [theme.breakpoints.up('sm')]: {
     padding: theme.spacing(4),
@@ -122,8 +129,9 @@ export default function SignUp(props) {
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
-      <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
+      
       <SignUpContainer direction="column" justifyContent="space-between">
+      <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
         <Card variant="outlined">
 
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
