@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -13,9 +14,11 @@ import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
 import InputAdornment from '@mui/material/InputAdornment';
 import OutlinedInput from '@mui/material/OutlinedInput';
+import TalentInfo from './TalentInfo';
 import { styled } from '@mui/material/styles';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import RssFeedRoundedIcon from '@mui/icons-material/RssFeedRounded';
+
 
 const cardData = [
   {
@@ -36,20 +39,24 @@ const cardData = [
         tag: 'Tiktoker- Izquierda',
         title: '@imrickytalavera- Ricardo Talaverai',
         description:
-          'Tiktoker Puerto Riquenos con enfoque en politica local e internacional.',
+          'Tiktoker puertorriqueño de orientación política de izquierda. Con una audiencia predominantemente joven,su contenido atrae especialmente a personas entre 18 y 35 años, interesados en temas políticos y sociales. Talavera se identifica como un hombre que, además de abordar la política local e internacional, comparte su visión desde una perspectiva secular, aunque respeta y reconoce la diversidad de creencias dentro de su comunidad. Su enfoque inclusivo y progresista busca resonar con aquellos que buscan una discusión política abierta, crítica y con conciencia social.',
         authors: [
           { name: 'Tikok', avatar: 'https://thumbs.dreamstime.com/b/tiktok-social-media-app-icon-tiktok-social-media-app-icon-square-shape-vector-illustration-269930887.jpg'},
-          { name: 'X' },
-          { name: 'Youtube'}
+          { name: 'X',avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/1690643591twitter-x-logo-png.webp/1024px-1690643591twitter-x-logo-png.webp.png'},      
+          { name: 'Youtube', avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png'},
         ],
       },
   {
-    img: 'https://picsum.photos/800/450?random=3',
-    tag: 'Design',
-    title: 'Designing for the future: trends and insights',
+    img: 'https://images.squarespace-cdn.com/content/v1/60b79b8d05f48f0d1fde93c7/904f7ed7-3547-4cd4-b661-95fed747a7a3/4H6A5668-Edit.jpg?format=1500w',
+    tag: 'Instagramer-Dereche',
+    title: 'Elizsbeth Torres',
     description:
-      'Stay ahead of the curve with the latest design trends and insights. Our design team shares their expertise on creating intuitive and visually stunning user experiences.',
-    authors: [{ name: 'Kate Morrison', avatar: '/static/images/avatar/7.jpg' }],
+      'Influenzer general, Anti Vacunas y promotora ideas sobre el virus covid.',
+    authors: [
+      { name: 'X' },
+      { name: 'Youtube'},
+      { name: 'Instagram'},
+    ],
   },
   {
     img: 'https://picsum.photos/800/450?random=4',
@@ -79,6 +86,7 @@ const cardData = [
     authors: [{ name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' }],
   },
 ];
+
 
 const SyledCard = styled(Card)(({ theme }) => ({
   display: 'flex',
@@ -145,7 +153,6 @@ function Author({ authors }) {
           {authors.map((author) => author.name).join(', ')}
         </Typography>
       </Box>
-      <Typography variant="caption">July 14, 2021</Typography>
     </Box>
   );
 }
@@ -158,6 +165,8 @@ Author.propTypes = {
     }),
   ).isRequired,
 };
+
+const handleClose = () => {setOpen(false);};
 
 export function Search() {
   return (
@@ -181,6 +190,7 @@ export function Search() {
 }
 
 export default function MainContent() {
+  const [open, setOpen] = React.useState(false);
   const [focusedCardIndex, setFocusedCardIndex] = React.useState(null);
 
   const handleFocus = (index) => {
@@ -196,6 +206,7 @@ export default function MainContent() {
   };
 
   return (
+    
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
       <div>
         <Typography variant="h1" gutterBottom>
@@ -205,93 +216,187 @@ export default function MainContent() {
           una nueva campaña!
         </Typography>
       </div>
-      <Box
-        sx={{
-          display: { xs: 'flex', sm: 'none' },
-          flexDirection: 'row',
-          gap: 1,
-          width: { xs: '100%', md: 'fit-content' },
-          overflow: 'auto',
-        }}
-      >
-        <Search />
-        <IconButton size="small" aria-label="RSS feed">
-          <RssFeedRoundedIcon />
-        </IconButton>
-      </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          flexDirection: { xs: 'column-reverse', md: 'row' },
-          width: '100%',
-          justifyContent: 'space-between',
-          alignItems: { xs: 'start', md: 'center' },
-          gap: 4,
-          overflow: 'auto',
-        }}
-      >
-        <Box
-          sx={{
-            display: 'inline-flex',
-            flexDirection: 'row',
-            gap: 3,
-            overflow: 'auto',
-          }}
-        >
-          <Chip onClick={handleClick} size="medium" label="All categories" />
-          <Chip
-            onClick={handleClick}
-            size="medium"
-            label="Company"
-            sx={{
-              backgroundColor: 'transparent',
-              border: 'none',
-            }}
-          />
-          <Chip
-            onClick={handleClick}
-            size="medium"
-            label="Product"
-            sx={{
-              backgroundColor: 'transparent',
-              border: 'none',
-            }}
-          />
-          <Chip
-            onClick={handleClick}
-            size="medium"
-            label="Design"
-            sx={{
-              backgroundColor: 'transparent',
-              border: 'none',
-            }}
-          />
-          <Chip
-            onClick={handleClick}
-            size="medium"
-            label="Engineering"
-            sx={{
-              backgroundColor: 'transparent',
-              border: 'none',
-            }}
-          />
-        </Box>
-        <Box
-          sx={{
-            display: { xs: 'none', sm: 'flex' },
-            flexDirection: 'row',
-            gap: 1,
-            width: { xs: '100%', md: 'fit-content' },
-            overflow: 'auto',
-          }}
-        >
-          <Search />
-          <IconButton size="small" aria-label="RSS feed">
-            <RssFeedRoundedIcon />
-          </IconButton>
-        </Box>
-      </Box>
       <Grid container spacing={2} columns={12}>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <SyledCard
+            variant="outlined"
+            onFocus={() => handleFocus(0)}
+            onBlur={handleBlur}
+            tabIndex={0}
+            className={focusedCardIndex === 0 ? 'Mui-focused' : ''}
+          >
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              image={cardData[0].img}
+              sx={{
+                aspectRatio: '16 / 9',
+                borderBottom: '1px solid',
+                borderColor: 'divider',
+              }}
+            />
+            <SyledCardContent>
+              <Typography gutterBottom variant="caption" component="div">
+                {cardData[0].tag}
+              </Typography>
+              <Typography gutterBottom variant="h6" component="div">
+                {cardData[0].title}
+              </Typography>
+              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
+                {cardData[0].description}
+              </StyledTypography>
+              <Button 
+                variant="contained" 
+                color="primary" 
+                onClick={()=>setOpen(!open)}
+                sx={{ mt: 2 }}>
+                Añadir a mi campaña!
+              </Button>
+              <TalentInfo open={open} handleClose={()=>setOpen(!open)} handleTalent={(cardData[0].title)} />
+            </SyledCardContent>
+            <Author authors={cardData[0].authors} />
+          </SyledCard>
+        </Grid>
+        <Grid size={{ xs: 12, md: 6 }}>
+          <SyledCard
+            variant="outlined"
+            onFocus={() => handleFocus(1)}
+            onBlur={handleBlur}
+            tabIndex={0}
+            className={focusedCardIndex === 1 ? 'Mui-focused' : ''}
+          >
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              image={cardData[1].img}
+              aspect-ratio="16 / 9"
+              sx={{
+                borderBottom: '1px solid',
+                borderColor: 'divider',
+              }}
+            />
+            <SyledCardContent>
+              <Typography gutterBottom variant="caption" component="div">
+                {cardData[1].tag}
+              </Typography>
+              <Typography gutterBottom variant="h6" component="div">
+                {cardData[1].title}
+              </Typography>
+              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
+                {cardData[1].description}
+              </StyledTypography>
+              <Button 
+                variant="contained" 
+                color="primary" 
+                onClick={()=>setOpen(!open)}
+                sx={{ mt: 2 }}>
+                Añadir a mi campaña!
+              </Button>
+              <TalentInfo open={open} handleClose={()=>setOpen(!open)} handleTalent={(cardData[1].title)} />
+            </SyledCardContent>
+            <Author authors={cardData[1].authors} />
+          </SyledCard>
+        </Grid>
+        <Grid size={{ xs: 12, md: 4 }}>
+          <SyledCard
+            variant="outlined"
+            onFocus={() => handleFocus(2)}
+            onBlur={handleBlur}
+            tabIndex={0}
+            className={focusedCardIndex === 2 ? 'Mui-focused' : ''}
+            sx={{ height: '100%' }}
+          >
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              image={cardData[2].img}
+              sx={{
+                height: { sm: 'auto', md: '50%' },
+                aspectRatio: { sm: '16 / 9', md: '' },
+              }}
+            />
+            <SyledCardContent>
+              <Typography gutterBottom variant="caption" component="div">
+                {cardData[2].tag}
+              </Typography>
+              <Typography gutterBottom variant="h6" component="div">
+                {cardData[2].title}
+              </Typography>
+              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
+                {cardData[2].description}
+              </StyledTypography>
+            </SyledCardContent>
+            <Author authors={cardData[2].authors} />
+          </SyledCard>
+        </Grid>
+        <Grid size={{ xs: 12, md: 4 }}>
+          <Box
+            sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}
+          >
+            <SyledCard
+            variant="outlined"
+            onFocus={() => handleFocus(5)}
+            onBlur={handleBlur}
+            tabIndex={0}
+            className={focusedCardIndex === 5 ? 'Mui-focused' : ''}
+            sx={{ height: '100%' }}
+          >
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              image={cardData[3].img}
+              sx={{
+                height: { sm: 'auto', md: '50%' },
+                aspectRatio: { sm: '16 / 9', md: '' },
+              }}
+            />
+            <SyledCardContent>
+              <Typography gutterBottom variant="caption" component="div">
+                {cardData[3].tag}
+              </Typography>
+              <Typography gutterBottom variant="h6" component="div">
+                {cardData[3].title}
+              </Typography>
+              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
+                {cardData[3].description}
+              </StyledTypography>
+            </SyledCardContent>
+            <Author authors={cardData[3].authors} />
+          </SyledCard>
+          </Box>
+        </Grid>
+        <Grid size={{ xs: 12, md: 4 }}>
+          <SyledCard
+            variant="outlined"
+            onFocus={() => handleFocus(4)}
+            onBlur={handleBlur}
+            tabIndex={0}
+            className={focusedCardIndex === 5 ? 'Mui-focused' : ''}
+            sx={{ height: '100%' }}
+          >
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              image={cardData[4].img}
+              sx={{
+                height: { sm: 'auto', md: '50%' },
+                aspectRatio: { sm: '16 / 9', md: '' },
+              }}
+            />
+            <SyledCardContent>
+              <Typography gutterBottom variant="caption" component="div">
+                {cardData[4].tag}
+              </Typography>
+              <Typography gutterBottom variant="h6" component="div">
+                {cardData[4].title}
+              </Typography>
+              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
+                {cardData[4].description}
+              </StyledTypography>
+            </SyledCardContent>
+            <Author authors={cardData[4].authors} />
+          </SyledCard>
+        </Grid>
         <Grid size={{ xs: 12, md: 6 }}>
           <SyledCard
             variant="outlined"
@@ -354,144 +459,6 @@ export default function MainContent() {
               </StyledTypography>
             </SyledCardContent>
             <Author authors={cardData[1].authors} />
-          </SyledCard>
-        </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <SyledCard
-            variant="outlined"
-            onFocus={() => handleFocus(2)}
-            onBlur={handleBlur}
-            tabIndex={0}
-            className={focusedCardIndex === 2 ? 'Mui-focused' : ''}
-            sx={{ height: '100%' }}
-          >
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              image={cardData[2].img}
-              sx={{
-                height: { sm: 'auto', md: '50%' },
-                aspectRatio: { sm: '16 / 9', md: '' },
-              }}
-            />
-            <SyledCardContent>
-              <Typography gutterBottom variant="caption" component="div">
-                {cardData[2].tag}
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                {cardData[2].title}
-              </Typography>
-              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                {cardData[2].description}
-              </StyledTypography>
-            </SyledCardContent>
-            <Author authors={cardData[2].authors} />
-          </SyledCard>
-        </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Box
-            sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}
-          >
-            <SyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(3)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
-              sx={{ height: '100%' }}
-            >
-              <SyledCardContent
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
-              >
-                <div>
-                  <Typography gutterBottom variant="caption" component="div">
-                    {cardData[3].tag}
-                  </Typography>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {cardData[3].title}
-                  </Typography>
-                  <StyledTypography
-                    variant="body2"
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {cardData[3].description}
-                  </StyledTypography>
-                </div>
-              </SyledCardContent>
-              <Author authors={cardData[3].authors} />
-            </SyledCard>
-            <SyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(4)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === 4 ? 'Mui-focused' : ''}
-              sx={{ height: '100%' }}
-            >
-              <SyledCardContent
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
-              >
-                <div>
-                  <Typography gutterBottom variant="caption" component="div">
-                    {cardData[4].tag}
-                  </Typography>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {cardData[4].title}
-                  </Typography>
-                  <StyledTypography
-                    variant="body2"
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {cardData[4].description}
-                  </StyledTypography>
-                </div>
-              </SyledCardContent>
-              <Author authors={cardData[4].authors} />
-            </SyledCard>
-          </Box>
-        </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <SyledCard
-            variant="outlined"
-            onFocus={() => handleFocus(5)}
-            onBlur={handleBlur}
-            tabIndex={0}
-            className={focusedCardIndex === 5 ? 'Mui-focused' : ''}
-            sx={{ height: '100%' }}
-          >
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              image={cardData[5].img}
-              sx={{
-                height: { sm: 'auto', md: '50%' },
-                aspectRatio: { sm: '16 / 9', md: '' },
-              }}
-            />
-            <SyledCardContent>
-              <Typography gutterBottom variant="caption" component="div">
-                {cardData[5].tag}
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                {cardData[5].title}
-              </Typography>
-              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                {cardData[5].description}
-              </StyledTypography>
-            </SyledCardContent>
-            <Author authors={cardData[5].authors} />
           </SyledCard>
         </Grid>
       </Grid>

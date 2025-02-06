@@ -5,7 +5,7 @@ import SignIn from './sign-in/SignIn';
 import Landing from './sign-in/landing.jsx';
 import Checkout from './checkout/Checkout';
 import Blog from './blog/Blog.jsx';
-import Profile from './profile/profile.jsx';
+import Profile from './profile/Profile.jsx';
 
 const App = () => (
   <Router>
