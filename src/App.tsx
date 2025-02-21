@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SignUp from './sign-up/SignUp';
+import SignUp from './sign-up/SignUp_mail';
 import SignIn from './sign-in/SignIn';
 import Landing from './sign-in/landing.jsx';
 import Checkout from './checkout/Checkout';
@@ -11,7 +11,7 @@ import Terms from './blog/footerContent/BlogTerms.jsx';
 import Privacy from './blog/footerContent/BlogPrivacy.jsx';
 import Aboutus from './blog/footerContent/BlogAboutus.jsx';
 
-import Report1 from './blog/components/reports/Report1.jsx';
+import Report from './blog/components/reports/Report';
 import ReportTest from './blog/components/reports/ReportTest.jsx';
 const App = () => (
   <Router>
@@ -26,7 +26,7 @@ const App = () => (
       <Route path="/Terms" element={<Terms />} />
       <Route path="/Privacy" element={<Privacy />} />
       <Route path="/Aboutus" element={<Aboutus />} />
-      <Route path="/Report1" element={<Report1 />} />
+      <Route path="/report/:id" element={<Report />} />
       <Route path="/ReportTest" element={<ReportTest />} />
     </Routes>
   </Router>

@@ -19,6 +19,7 @@ import { styled } from '@mui/material/styles';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
 import RssFeedRoundedIcon from '@mui/icons-material/RssFeedRounded';
 import Link from '@mui/material/Link';
+//import {crearInforme, obtenerInformes} from './reportsconection'
 
 
 const cardData = [
@@ -271,7 +272,7 @@ export default function MainContent() {
               >
                 <Chip
                   component={Link}
-                  href="/Report1"
+                  href={'/report/1'}
                   label="Read more..."
                   size="medium"
                   sx={{
