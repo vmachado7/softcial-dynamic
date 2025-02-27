@@ -74,7 +74,7 @@ export default function AppAppBar() {
           >
             <Button color="primary" variant="contained" size="small"
             onClick={(e) => {e.preventDefault();window.location.href = '/checkout';}}>
-              Mi subscripción
+              Pagar por reportes
             </Button>
             <ColorModeIconDropdown />
           </Box>

@@ -42,30 +42,30 @@ const cardData = [
       { name: 'Reporte en proceso...', avatar: 'https://superstorefinder.net/support/wp-content/uploads/2018/01/orange_circles.gif' },],
   },
   {
-    img: 'https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1242375600.jpg?c=16x9&q=w_1280,c_fill',
-    tag: 'Figura Política',
-    title: 'Gustavo Petro',
+    img: 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2023-12/231221-hbomberguy-youtube-snip-ac-512p-ac9ddd.jpg',
+    tag: 'Influencer',
+    title: 'HbomberGuy',
     description:
-      'Gustavo Francisco Petro Urrego es un político, economista y actual presidente de Colombia desde el 7 de agosto de 2022.',
+      'Harry Brewis es un YouTuber y streamer de Twitch británico, productor de videoensayos sobre diversos temas con argumentos de posiciones políticas y económicas de izquierdas.',
     authors: [
       { name: 'Reporte Listo', avatar: 'https://static-00.iconduck.com/assets.00/checkmark-running-icon-2048x2048-8081bf4v.png' },],
   },
 
   {
-    img: 'https://www.iagua.es/sites/default/files/styles/thumbnail-830x455/public/donald-trump-wikipedia_0.jpg?itok=7JCPwkYk',
-    tag: 'Figura Política',
-    title: 'Danald Trump',
+    img: 'https://www.publimetro.co/resizer/v2/YQYHMUBL4JDVXHRDKQS6VW5XIA.png?auth=0a4f4e587ea3da38014a1c79a00f50d6013398688941fb6943c0ef180e177c6a&width=1200&height=675&smart=true',
+    tag: 'Influencer',
+    title: ' Epa Colombia',
     description:
-      'Donald John Trump es un empresario, personalidad televisiva y político conservador​ estadounidense. Miembro del Partido Republicano, es el 47avo presidente de los Estados Unidos desde el 20 de enero de 2025.',
+      'Daneidy Barrera Rojas, conocida por su apodo Epa Colombia, es una modelo, influencer y empresaria colombiana.',
     authors: [
       { name: 'Reporte en proceso...', avatar: 'https://superstorefinder.net/support/wp-content/uploads/2018/01/orange_circles.gif' },],
   },
   {
-    img: 'https://www.iagua.es/sites/default/files/styles/thumbnail-830x455/public/donald-trump-wikipedia_0.jpg?itok=7JCPwkYk',
-    tag: 'Figura Política',
-    title: 'Danald Trump',
+    img: 'https://akm-img-a-in.tosshub.com/indiatoday/images/story/202412/doge-elon-musk-133335475-16x9.jpg?VersionId=0Kma2biGOtwpaXsihGz1g.RMb8SJCCI3&size=690:388',
+    tag: 'Cuerpo del Gobierno de E.E.U.U.',
+    title: 'DOGE',
     description:
-      'Donald John Trump es un empresario, personalidad televisiva y político conservador​ estadounidense. Miembro del Partido Republicano, es el 47avo presidente de los Estados Unidos desde el 20 de enero de 2025.',
+      'El Departamento de Eficiencia Gubernamental (DOGE por sus siglas en inglés),​ es una comisión asesora presidencial de los Estados Unidos.',
     authors: [
       { name: 'Reporte en proceso...', avatar: 'https://superstorefinder.net/support/wp-content/uploads/2018/01/orange_circles.gif' },],
   },
@@ -209,7 +209,7 @@ export default function MainContent() {
           Mis reportes
         </Typography>
         <Typography>
-          Desde aqui puedes acceder al reporte generado el dia de hoy a tu tendencia de interés.
+          Desde aqui puedes acceder al reporte generado el dia de ayer a tu tendencia de interés.
         </Typography>
       </div>
       <Grid container spacing={2} columns={12}>
@@ -220,8 +220,7 @@ export default function MainContent() {
             onBlur={handleBlur}
             tabIndex={0}
             $focused={focusedCardIndex === 0}
-            className={focusedCardIndex === 0 ? 'Mui-focused' : ''}
-          >
+            className={focusedCardIndex === 0 ? 'Mui-focused' : ''}>
             <CardMedia
               component="img"
               alt="green iguana"
@@ -242,30 +241,15 @@ export default function MainContent() {
               <StyledTypography variant="body2" color="text.secondary" gutterBottom>
                 {cardData[0].description}
               </StyledTypography>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => setOpen(!open)}
-                sx={{ mt: 2 }}>
-                Añadir a mi campaña!
-              </Button>
-              <Box
-                sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}
-              >
-                <Chip
+              <Chip
                   component={Link}
                   href={'/report/1'}
-                  label="Read more..."
-                  size="medium"
+                  label="Ver Reporte"
+                  size="large"
                   sx={{
                     backgroundColor: 'transparent',
-                    border: 'none',
-                  }
-                  }
-
-                />
-              </Box>
-              <TalentInfo open={open} handleClose={() => setOpen(!open)} handleTalent={(cardData[0].title)} />
+                    border: 'none',}
+                  }/>
             </SyledCardContent>
             <Author authors={cardData[0].authors} />
           </SyledCard>
@@ -298,30 +282,15 @@ export default function MainContent() {
               <StyledTypography variant="body2" color="text.secondary" gutterBottom>
                 {cardData[1].description}
               </StyledTypography>
-              <Button
-                variant="contained"
-                color="primary"
-                onClick={() => setOpen(!open)}
-                sx={{ mt: 2 }}>
-                Añadir a mi campaña!
-              </Button>
-              <Box
-                sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}
-              >
-                <Chip
+              <Chip
                   component={Link}
-                  href="/ReportTest"
-                  label="Read more..."
-                  size="medium"
+                  href={'/report/1'}
+                  label="Ver Reporte"
+                  size="large"
                   sx={{
                     backgroundColor: 'transparent',
-                    border: 'none',
-                  }
-                  }
-
-                />
-              </Box>
-              <TalentInfo open={open} handleClose={() => setOpen(!open)} handleTalent={(cardData[1].title)} />
+                    border: 'none',}
+                  }/>
             </SyledCardContent>
             <Author authors={cardData[1].authors} />
           </SyledCard>
@@ -353,7 +322,16 @@ export default function MainContent() {
               </Typography>
               <StyledTypography variant="body2" color="text.secondary" gutterBottom>
                 {cardData[2].description}
-              </StyledTypography>
+                </StyledTypography>
+              <Chip
+                  component={Link}
+                  href={'/report/1'}
+                  label="Ver Reporte"
+                  size="large"
+                  sx={{
+                    backgroundColor: 'transparent',
+                    border: 'none',}
+                  }/>
             </SyledCardContent>
             <Author authors={cardData[2].authors} />
           </SyledCard>
@@ -388,8 +366,17 @@ export default function MainContent() {
                 </Typography>
                 <StyledTypography variant="body2" color="text.secondary" gutterBottom>
                   {cardData[3].description}
-                </StyledTypography>
-              </SyledCardContent>
+                  </StyledTypography>
+              <Chip
+                  component={Link}
+                  href={'/report/1'}
+                  label="Ver Reporte"
+                  size="large"
+                  sx={{
+                    backgroundColor: 'transparent',
+                    border: 'none',}
+                  }/>
+            </SyledCardContent>
               <Author authors={cardData[3].authors} />
             </SyledCard>
           </Box>
@@ -421,7 +408,16 @@ export default function MainContent() {
               </Typography>
               <StyledTypography variant="body2" color="text.secondary" gutterBottom>
                 {cardData[4].description}
-              </StyledTypography>
+                </StyledTypography>
+              <Chip
+                  component={Link}
+                  href={'/report/1'}
+                  label="Ver Reporte"
+                  size="large"
+                  sx={{
+                    backgroundColor: 'transparent',
+                    border: 'none',}
+                  }/>
             </SyledCardContent>
             <Author authors={cardData[4].authors} />
           </SyledCard>

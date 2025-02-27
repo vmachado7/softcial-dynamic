@@ -10,10 +10,9 @@ import Typography from '@mui/material/Typography';
 
 const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
 const payments = [
-  { name: 'Tarjeta:', detail: 'Visa' },
   { name: 'Nombre:', detail: 'Hernando Rodriguez' },
-  { name: 'Numero:', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiración:', detail: '03/2025' },
+  { name: 'Numero:', detail: '3223620938' },
+  { name: 'Metodo de Pago:', detail: 'MercadoPago' },
 ];
 
 export default function Review() {
@@ -21,17 +20,17 @@ export default function Review() {
     <Stack spacing={2}>
       <List disablePadding>
       <ListItem sx={{ py: 1, px: 0 }}>
-          <ListItemText primary="Plan de Subscripción seleccionado" secondary="4 meses" />
-          <Typography variant="body2">$50.000</Typography>
+          <ListItemText primary="Plan de Subscripción seleccionado" secondary="Renovación mensual." />
+          <Typography variant="body2">$30.925</Typography>
         </ListItem>
         <ListItem sx={{ py: 1, px: 0 }}>
-          <ListItemText primary="Aporte solidario" secondary="Gracias" />
-          <Typography variant="body2">$250.000</Typography>
+          <ListItemText primary="IVA" secondary="" />
+          <Typography variant="body2">$5.875</Typography>
         </ListItem>
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
           <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
-            $300.000
+            $36.800
           </Typography>
         </ListItem>
       </List>
@@ -44,7 +43,7 @@ export default function Review() {
       >
         <div>
           <Typography variant="subtitle2" gutterBottom>
-            Detalles de pago
+            Detalles del Usuario
           </Typography>
           <Grid container>
             {payments.map((payment) => (

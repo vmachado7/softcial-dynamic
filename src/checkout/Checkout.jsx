@@ -95,7 +95,7 @@ export default function Checkout(props) {
               maxWidth: 500,
             }}
           >
-            <Info totalPrice={activeStep >= 2 ? '$300.000' : '$50.000'} />
+            <Info totalPrice={activeStep >= 2 ? '$36.800' : '$30.925'} />
           </Box>
         </Grid>
         <Grid
@@ -273,7 +273,7 @@ export default function Checkout(props) {
                     onClick={handleNext}
                     sx={{ width: { xs: '100%', sm: 'fit-content' } }}
                   >
-                    {activeStep === steps.length - 1 ? 'Finalizar' : 'Siguiente'}
+                    {activeStep === steps.length - 1 ? 'Enviar información' : 'Siguiente'}
                   </Button>
                 </Box>
               </React.Fragment>

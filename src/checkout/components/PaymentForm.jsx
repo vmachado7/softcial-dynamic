@@ -247,7 +247,7 @@ export default function PaymentForm() {
           </PaymentContainer>
           <FormControlLabel
             control={<Checkbox name="saveCard" />}
-            label="Recordar los datos de pago."
+            label="Recordar mi información."
           />
         </Box>
       )}

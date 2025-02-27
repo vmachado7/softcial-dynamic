@@ -4,6 +4,7 @@ import SignUp from './sign-up/SignUp_mail';
 import SignIn from './sign-in/SignIn';
 import Landing from './sign-in/landing.jsx';
 import Checkout from './checkout/Checkout';
+import Plans from './checkout/Plans';
 import Blog from './blog/Blog.jsx';
 import Profile from './profile/Profile.jsx';
 
@@ -19,6 +20,7 @@ const App = () => (
       <Route path="/home" element={<Blog />} />
       <Route path="/landing" element={<Landing />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/plans" element={<Plans />} />
       <Route path="/report/:id" element={<Report />} />
       <Route path="/ReportTest" element={<ReportTest />} />
     </Routes>
