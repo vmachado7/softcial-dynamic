@@ -9,7 +9,6 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Chip from '@mui/material/Chip';
 import Grid from '@mui/material/Grid2';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import FormControl from '@mui/material/FormControl';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -24,68 +23,51 @@ import Link from '@mui/material/Link';
 
 const cardData = [
   {
-    img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Vaush.jpg/1200px-Vaush.jpg',
-    tag: 'Streamer - Izquierda',
-    title: '"Vaush" - Ian Anthony Kochinski',
+    img: 'https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1242375600.jpg?c=16x9&q=w_1280,c_fill',
+    tag: 'Figura Política',
+    title: 'Gustavo Petro',
     description:
-      'An American left-wing YouTuber and former Twitch streamer. Kochinski started his online career.',
+      'Gustavo Francisco Petro Urrego es un político, economista y actual presidente de Colombia desde el 7 de agosto de 2022.',
     authors: [
-      { name: 'Twitch', avatar: 'https://img.freepik.com/vector-premium/logotipo-contraccion_578229-259.jpg?semt=ais_hybrid' },
-      { name: 'Youtube', avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png' },
-      { name: 'X', avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/1690643591twitter-x-logo-png.webp/1024px-1690643591twitter-x-logo-png.webp.png' },
-    ],
+      { name: 'Reporte Listo', avatar: 'https://static-00.iconduck.com/assets.00/checkmark-running-icon-2048x2048-8081bf4v.png' },],
   },
 
   {
-    img: 'https://pbs.twimg.com/profile_images/1882891121203773440/3RZ5SId__400x400.jpg',
-    tag: 'Tiktoker- Izquierda',
-    title: '@imrickytalavera- Ricardo Talaverai',
+    img: 'https://www.iagua.es/sites/default/files/styles/thumbnail-830x455/public/donald-trump-wikipedia_0.jpg?itok=7JCPwkYk',
+    tag: 'Figura Política',
+    title: 'Danald Trump',
     description:
-      'Tiktoker puertorriqueño de orientación política de izquierda. Con una audiencia predominantemente joven,su contenido atrae especialmente a personas entre 18 y 35 años, interesados en temas políticos y sociales. Talavera se identifica como un hombre que, además de abordar la política local e internacional, comparte su visión desde una perspectiva secular, aunque respeta y reconoce la diversidad de creencias dentro de su comunidad. Su enfoque inclusivo y progresista busca resonar con aquellos que buscan una discusión política abierta, crítica y con conciencia social.',
+      'Donald John Trump es un empresario, personalidad televisiva y político conservador​ estadounidense. Miembro del Partido Republicano, es el 47avo presidente de los Estados Unidos desde el 20 de enero de 2025.',
     authors: [
-      { name: 'Tikok', avatar: 'https://thumbs.dreamstime.com/b/tiktok-social-media-app-icon-tiktok-social-media-app-icon-square-shape-vector-illustration-269930887.jpg' },
-      { name: 'X', avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/1690643591twitter-x-logo-png.webp/1024px-1690643591twitter-x-logo-png.webp.png' },
-      { name: 'Youtube', avatar: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/YouTube_full-color_icon_%282017%29.svg/1024px-YouTube_full-color_icon_%282017%29.svg.png' },
-    ],
+      { name: 'Reporte en proceso...', avatar: 'https://superstorefinder.net/support/wp-content/uploads/2018/01/orange_circles.gif' },],
   },
   {
-    img: 'https://images.squarespace-cdn.com/content/v1/60b79b8d05f48f0d1fde93c7/904f7ed7-3547-4cd4-b661-95fed747a7a3/4H6A5668-Edit.jpg?format=1500w',
-    tag: 'Instagramer-Dereche',
-    title: 'Elizsbeth Torres',
+    img: 'https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1242375600.jpg?c=16x9&q=w_1280,c_fill',
+    tag: 'Figura Política',
+    title: 'Gustavo Petro',
     description:
-      'Influenzer general, Anti Vacunas y promotora ideas sobre el virus covid.',
+      'Gustavo Francisco Petro Urrego es un político, economista y actual presidente de Colombia desde el 7 de agosto de 2022.',
     authors: [
-      { name: 'X' },
-      { name: 'Youtube' },
-      { name: 'Instagram' },
-    ],
+      { name: 'Reporte Listo', avatar: 'https://static-00.iconduck.com/assets.00/checkmark-running-icon-2048x2048-8081bf4v.png' },],
   },
+
   {
-    img: 'https://picsum.photos/800/450?random=4',
-    tag: 'Company',
-    title: "Our company's journey: milestones and achievements",
+    img: 'https://www.iagua.es/sites/default/files/styles/thumbnail-830x455/public/donald-trump-wikipedia_0.jpg?itok=7JCPwkYk',
+    tag: 'Figura Política',
+    title: 'Danald Trump',
     description:
-      "Take a look at our company's journey and the milestones we've achieved along the way. From humble beginnings to industry leader, discover our story of growth and success.",
-    authors: [{ name: 'Cindy Baker', avatar: '/static/images/avatar/3.jpg' }],
-  },
-  {
-    img: 'https://picsum.photos/800/450?random=45',
-    tag: 'Engineering',
-    title: 'Pioneering sustainable engineering solutions',
-    description:
-      "Learn about our commitment to sustainability and the innovative engineering solutions we're implementing to create a greener future. Discover the impact of our eco-friendly initiatives.",
+      'Donald John Trump es un empresario, personalidad televisiva y político conservador​ estadounidense. Miembro del Partido Republicano, es el 47avo presidente de los Estados Unidos desde el 20 de enero de 2025.',
     authors: [
-      { name: 'Agnes Walker', avatar: '/static/images/avatar/4.jpg' },
-      { name: 'Trevor Henderson', avatar: '/static/images/avatar/5.jpg' },
-    ],
+      { name: 'Reporte en proceso...', avatar: 'https://superstorefinder.net/support/wp-content/uploads/2018/01/orange_circles.gif' },],
   },
   {
-    img: 'https://picsum.photos/800/450?random=6',
-    tag: 'Product',
-    title: 'Maximizing efficiency with our latest product updates',
+    img: 'https://www.iagua.es/sites/default/files/styles/thumbnail-830x455/public/donald-trump-wikipedia_0.jpg?itok=7JCPwkYk',
+    tag: 'Figura Política',
+    title: 'Danald Trump',
     description:
-      'Our recent product updates are designed to help you maximize efficiency and achieve more. Get a detailed overview of the new features and improvements that can elevate your workflow.',
-    authors: [{ name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' }],
+      'Donald John Trump es un empresario, personalidad televisiva y político conservador​ estadounidense. Miembro del Partido Republicano, es el 47avo presidente de los Estados Unidos desde el 20 de enero de 2025.',
+    authors: [
+      { name: 'Reporte en proceso...', avatar: 'https://superstorefinder.net/support/wp-content/uploads/2018/01/orange_circles.gif' },],
   },
 ];
 
@@ -224,10 +206,10 @@ export default function MainContent() {
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
       <div>
         <Typography variant="h1" gutterBottom>
-          Nuestros afiliados
+          Mis reportes
         </Typography>
-        <Typography>Obten información acerca de nuestros afiliados, y selecciona con cuantos estas interesado en formar
-          una nueva campaña!
+        <Typography>
+          Desde aqui puedes acceder al reporte generado el dia de hoy a tu tendencia de interés.
         </Typography>
       </div>
       <Grid container spacing={2} columns={12}>
@@ -442,292 +424,6 @@ export default function MainContent() {
               </StyledTypography>
             </SyledCardContent>
             <Author authors={cardData[4].authors} />
-          </SyledCard>
-        </Grid>
-        <Grid size={{ xs: 12, md: 6 }}>
-          <SyledCard
-            variant="outlined"
-            onFocus={() => handleFocus(0)}
-            onBlur={handleBlur}
-            tabIndex={0}
-            className={focusedCardIndex === 0 ? 'Mui-focused' : ''}
-          >
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              image={cardData[0].img}
-              sx={{
-                aspectRatio: '16 / 9',
-                borderBottom: '1px solid',
-                borderColor: 'divider',
-              }}
-            />
-            <SyledCardContent>
-              <Typography gutterBottom variant="caption" component="div">
-                {cardData[0].tag}
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                {cardData[0].title}
-              </Typography>
-              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                {cardData[0].description}
-              </StyledTypography>
-            </SyledCardContent>
-            <Box
-              sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}
-            >
-              <Chip
-                component={Link}
-                href="/Report1"
-                label="Read more..."
-                size="medium"
-                sx={{
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                }
-                }
-
-              />
-            </Box>
-
-
-
-            <Author authors={cardData[0].authors} />
-          </SyledCard>
-        </Grid>
-        <Grid size={{ xs: 12, md: 6 }}>
-          <SyledCard
-            variant="outlined"
-            onFocus={() => handleFocus(1)}
-            onBlur={handleBlur}
-            tabIndex={0}
-            className={focusedCardIndex === 1 ? 'Mui-focused' : ''}
-          >
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              image={cardData[1].img}
-              aspect-ratio="16 / 9"
-              sx={{
-                borderBottom: '1px solid',
-                borderColor: 'divider',
-              }}
-            />
-            <SyledCardContent>
-              <Typography gutterBottom variant="caption" component="div">
-                {cardData[1].tag}
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                {cardData[1].title}
-              </Typography>
-              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                {cardData[1].description}
-              </StyledTypography>
-            </SyledCardContent>
-            <Box
-              sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}
-            >
-              <Chip
-                component={Link}
-                href="/ReportTest"
-                label="Read more..."
-                size="medium"
-                sx={{
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                }
-                }
-
-              />
-            </Box>
-            <Author authors={cardData[1].authors} />
-          </SyledCard>
-        </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <SyledCard
-            variant="outlined"
-            onFocus={() => handleFocus(2)}
-            onBlur={handleBlur}
-            tabIndex={0}
-            className={focusedCardIndex === 2 ? 'Mui-focused' : ''}
-            sx={{ height: '100%' }}
-          >
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              image={cardData[2].img}
-              sx={{
-                height: { sm: 'auto', md: '50%' },
-                aspectRatio: { sm: '16 / 9', md: '' },
-              }}
-            />
-            <SyledCardContent>
-              <Typography gutterBottom variant="caption" component="div">
-                {cardData[2].tag}
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                {cardData[2].title}
-              </Typography>
-              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                {cardData[2].description}
-              </StyledTypography>
-            </SyledCardContent>
-
-            <Author authors={cardData[2].authors} />
-          </SyledCard>
-        </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Box
-            sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}
-          >
-            <SyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(3)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
-              sx={{ height: '100%' }}
-            >
-              <SyledCardContent
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
-              >
-                <div>
-                  <Typography gutterBottom variant="caption" component="div">
-                    {cardData[3].tag}
-                  </Typography>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {cardData[3].title}
-                  </Typography>
-                  <StyledTypography
-                    variant="body2"
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {cardData[3].description}
-                  </StyledTypography>
-                </div>
-              </SyledCardContent>
-              <Box
-                sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}
-              >
-                <Chip
-                  component={Link}
-                  href="/Terms"
-                  label="Read more..."
-                  size="medium"
-                  sx={{
-                    backgroundColor: 'transparent',
-                    border: 'none',
-                  }
-                  }
-
-                />
-              </Box>
-              <Author authors={cardData[3].authors} />
-            </SyledCard>
-            <SyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(4)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === 4 ? 'Mui-focused' : ''}
-              sx={{ height: '100%' }}
-            >
-              <SyledCardContent
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
-              >
-                <div>
-                  <Typography gutterBottom variant="caption" component="div">
-                    {cardData[4].tag}
-                  </Typography>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {cardData[4].title}
-                  </Typography>
-                  <StyledTypography
-                    variant="body2"
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {cardData[4].description}
-                  </StyledTypography>
-                </div>
-              </SyledCardContent>
-              <Box
-                sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}
-              >
-                <Chip
-                  component={Link}
-                  href="/Terms"
-                  label="Read more..."
-                  size="medium"
-                  sx={{
-                    backgroundColor: 'transparent',
-                    border: 'none',
-                  }
-                  }
-
-                />
-              </Box>
-              <Author authors={cardData[4].authors} />
-            </SyledCard>
-          </Box>
-        </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <SyledCard
-            variant="outlined"
-            onFocus={() => handleFocus(5)}
-            onBlur={handleBlur}
-            tabIndex={0}
-            className={focusedCardIndex === 5 ? 'Mui-focused' : ''}
-            sx={{ height: '100%' }}
-          >
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              image={cardData[5].img}
-              sx={{
-                height: { sm: 'auto', md: '50%' },
-                aspectRatio: { sm: '16 / 9', md: '' },
-              }}
-            />
-            <SyledCardContent>
-              <Typography gutterBottom variant="caption" component="div">
-                {cardData[5].tag}
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                {cardData[5].title}
-              </Typography>
-              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                {cardData[5].description}
-              </StyledTypography>
-            </SyledCardContent>
-            <Box
-              sx={{ display: 'flex', justifyContent: 'flex-end', gap: 2 }}
-            >
-              <Chip
-                component={Link}
-                href="/Terms"
-                label="Read more..."
-                size="medium"
-                sx={{
-                  backgroundColor: 'transparent',
-                  border: 'none',
-                }
-                }
-
-              />
-            </Box>
-            <Author authors={cardData[5].authors} />
           </SyledCard>
         </Grid>
       </Grid>

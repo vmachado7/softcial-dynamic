@@ -7,10 +7,6 @@ import Checkout from './checkout/Checkout';
 import Blog from './blog/Blog.jsx';
 import Profile from './profile/Profile.jsx';
 
-import Terms from './blog/footerContent/BlogTerms.jsx';
-import Privacy from './blog/footerContent/BlogPrivacy.jsx';
-import Aboutus from './blog/footerContent/BlogAboutus.jsx';
-
 import Report from './blog/components/reports/Report';
 import ReportTest from './blog/components/reports/ReportTest.jsx';
 const App = () => (
@@ -23,9 +19,6 @@ const App = () => (
       <Route path="/home" element={<Blog />} />
       <Route path="/landing" element={<Landing />} />
       <Route path="/profile" element={<Profile />} />
-      <Route path="/Terms" element={<Terms />} />
-      <Route path="/Privacy" element={<Privacy />} />
-      <Route path="/Aboutus" element={<Aboutus />} />
       <Route path="/report/:id" element={<Report />} />
       <Route path="/ReportTest" element={<ReportTest />} />
     </Routes>

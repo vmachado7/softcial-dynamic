@@ -159,7 +159,7 @@ export default function PaymentForm() {
                     },
                   ]}
                 />
-                <Typography sx={{ fontWeight: 'medium' }}>Tarjeta de Credito</Typography>
+                <Typography sx={{ fontWeight: 'medium' }}>Datos</Typography>
               </CardContent>
             </CardActionArea>
           </Card>

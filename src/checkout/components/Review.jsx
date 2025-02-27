@@ -44,15 +44,6 @@ export default function Review() {
       >
         <div>
           <Typography variant="subtitle2" gutterBottom>
-            Detalles del usuario
-          </Typography>
-          <Typography gutterBottom>Hernando Rodriguez</Typography>
-          <Typography gutterBottom sx={{ color: 'text.secondary' }}>
-            {addresses.join(', ')}
-          </Typography>
-        </div>
-        <div>
-          <Typography variant="subtitle2" gutterBottom>
             Detalles de pago
           </Typography>
           <Grid container>

@@ -15,11 +15,9 @@ export default function Footer() {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
-          gap: { xs: 4, sm: 8 },
           py: { xs: 8, sm: 10 },
           textAlign: { sm: 'center', md: 'left' },
-        }}
-      >
+        }}>
         <Box
           sx={{
             display: 'flex',
@@ -36,31 +34,17 @@ export default function Footer() {
               minWidth: { xs: '100%', sm: '60%' },
             }}
           >
-            <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
-              <Typography
-                variant="body2"
-                gutterBottom
-                sx={{ fontWeight: 600, mt: 2 }}
-              >
-                Únete a nuestra lista de correos.
-              </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
-                Subscribete para recibir noticias del desarrollo de nuestras tecnologias!
-              </Typography>
-            </Box>
           </Box>
           <Box
             sx={{
               display: { xs: 'none', sm: 'flex' },
               flexDirection: 'column',
-              gap: 1,
-            }}
-          >
+            }}>
             <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-              Service
+              Softcial
             </Typography>
-            <Link color="text.secondary" variant="body2" href="#">
-              FAQs
+            <Link color="text.secondary" variant="body2" href="https://montenegrodanielfelipe.com/softcial/about/">
+              Sobre Nosotros
             </Link>
           </Box>
           <Box
@@ -68,51 +52,20 @@ export default function Footer() {
               display: { xs: 'none', sm: 'flex' },
               flexDirection: 'column',
               gap: 1,
-            }}
-          >
-            <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-              Company
-            </Typography>
-            <Link color="text.secondary" variant="body2" href="/Aboutus">
-              About us
-            </Link>
-          </Box>
-          <Box
-            sx={{
-              display: { xs: 'none', sm: 'flex' },
-              flexDirection: 'column',
-              gap: 1,
-            }}
-          >
+            }}>
             <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
               Legal
             </Typography>
-            <Link color="text.secondary" variant="body2" href="/Terms">
-              Terms
+            <Link color="text.secondary" variant="body2" href="https://montenegrodanielfelipe.com/softcial/terms-and-conditions/">
+              Terminos y Condiciones
             </Link>
-            <Link color="text.secondary" variant="body2" href="/Privacy">
-              Privacy
+            <Link color="text.secondary" variant="body2" href="https://montenegrodanielfelipe.com/softcial/privacy/">
+              Prolítica de Privacidad
             </Link>
-            <Link color="text.secondary" variant="body2" href="#">
-              Contact
+            <Link color="text.secondary" variant="body2" href="https://montenegrodanielfelipe.com/softcial/contact/">
+              Contáctanos
             </Link>
           </Box>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            pt: { xs: 4, sm: 8 },
-            width: '100%',
-            borderTop: '1px solid',
-            borderColor: 'divider',
-          }}
-        >
-          <div>
-            <Link color="text.secondary" variant="body2" href="#">
-              Terminos de Uso
-            </Link>
-          </div>
           <Stack
             direction="row"
             spacing={1}
