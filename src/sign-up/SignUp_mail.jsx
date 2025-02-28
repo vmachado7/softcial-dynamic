@@ -11,19 +11,37 @@ import { jwtDecode } from 'jwt-decode';
 import AppTheme from '../shared-theme/AppTheme';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
 import { useFormValidation } from './Useformvalidation';
-// import { initEmailService, sendConfirmationEmail } from './Emailservice';
 import { Card, SignUpContainer } from './Styles';
 import { SignUpForm } from './Signupform';
+
+// Función auxiliar para enviar el correo de confirmación
+const sendConfirmationEmail = async (userData) => {
+    try {
+        const response = await fetch('https://softcial-email-endpoint.onrender.com/api/send-confirmation-code', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                correo: userData.correo,
+                nombre: userData.nombre
+                
+            })
+        });
+
+        const result = await response.json();
+        console.log('este error:' , result)
+        return true;
+    } catch (error) {
+        console.error('Error al enviar el correo de confirmación:', error);
+        return false;
+    }
+};
 
 export default function SignUp(props) {
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = React.useState(false);
     const formValidation = useFormValidation();
-/*
-    useEffect(() => {
-        initEmailService();
-    }, []);
-*/
 const handleSubmit = async (event) => {
     event.preventDefault();
 
@@ -34,31 +52,52 @@ const handleSubmit = async (event) => {
 
     setIsSubmitting(true);
 
-    // Obtenemos los datos del formulario
-    const formData = new FormData(event.currentTarget);
-    const userData = {
-        name: formData.get('name'),
-        email: formData.get('email'),
-        password: formData.get('password'),
-    };
+   // Obtener valores directamente del formulario
+   const nameInput = document.getElementById('name');
+   const emailInput = document.getElementById('email');
+   const passwordInput = document.getElementById('password');
+   
+   const userData = {
+       nombre: nameInput.value,
+       correo: emailInput.value,
+       contraseña: passwordInput.value,
+   };
 
     try {
-        // Primero intentamos enviar el correo de bienvenida
+        // Primero registramos el usuario en nuestra API
+        const registerResponse = await fetch('https://softcial-reports-backend.onrender.com/api/usuarios', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userData)
+        });
+
+        // Verificamos la respuesta del registro
+        if (!registerResponse.ok) {
+            const errorData = await registerResponse.json();
+            throw new Error(errorData.error || 'Error al registrar usuario');
+        }
+
+        const userResult = await registerResponse.json();
+        console.log('Usuario registrado correctamente:', userResult);
+
+        /*/ Ahora intentamos enviar el correo de bienvenida
         const emailResponse = await fetch('https://softcial-email-endpoint.onrender.com/api/send-welcome-email', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                nombre: userData.name,  // Usamos el nombre del formulario
-                email: userData.email   // Usamos el email del formulario
+                nombre: userData.nombre,
+                email: userData.correo
             })
         });
-
+        */
         // Verificamos si el envío del correo fue exitoso
-        const emailResult = await emailResponse.json();
-
-        if (emailResult.success) {
+        //const emailResult = await emailResponse.json();
+        const emailResult = true;
+        if (emailResult) {
             // Si el correo se envió exitosamente, procedemos con el resto del registro
             const emailSent = await sendConfirmationEmail(userData);
 
@@ -66,17 +105,18 @@ const handleSubmit = async (event) => {
                 console.log('Usuario registrado y emails enviados:', userData);
                 // Mostramos un mensaje más completo al usuario
                 alert(
-                    '¡Registro exitoso! Te hemos enviado dos correos:\n' +
-                    '1. Un correo de bienvenida\n' +
-                    '2. Un correo de confirmación de cuenta\n\n' +
+                    '¡Registro exitoso! Te hemos enviado un correo de confirmación de cuenta\n\n' +
                     'Por favor, revisa tu bandeja de entrada para completar el proceso.'
                 );
-                navigate('/sign-in');
+                navigate('/sign-in'); // Me falta poner un formato para autenticar correos
             } else {
-                alert('Se envió el correo de bienvenida pero hubo un problema con el correo de confirmación. Por favor, contacta con soporte.');
+                alert('Se completó el registro y se envió el correo de bienvenida, pero hubo un problema con el correo de confirmación. Ya puedes iniciar sesión.');
+                navigate('/sign-in');
             }
         } else {
-            throw new Error('Error al enviar el correo de bienvenida');
+            // Si falla el correo pero el usuario fue registrado
+            alert('Usuario registrado correctamente, pero hubo un problema al enviar los correos. Ya puedes iniciar sesión.');
+            navigate('/sign-in');
         }
     } catch (error) {
         console.error('Error en el proceso de registro:', error);
@@ -90,6 +130,8 @@ const handleSubmit = async (event) => {
         setIsSubmitting(false);
     }
 };
+
+
 
     return (
         <AppTheme {...props}>

@@ -1,72 +1,30 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+// Componentes MUI
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
-
 import Button from '@mui/material/Button';
 import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
-import MuiCard from '@mui/material/Card';
-
-import { styled } from '@mui/material/styles';
-import AppTheme from '../shared-theme/AppTheme';
-import ForgotPassword from './ForgotPassword';
-import ColorModeSelect from '../shared-theme/ColorModeSelect';
-import { GoogleIcon, XIcon } from './CustomIcons';
-
-import { GoogleLogin } from '@react-oauth/google';
-import { jwtDecode } from 'jwt-decode';
-
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormLabel from '@mui/material/FormLabel';
 import FormControl from '@mui/material/FormControl';
 import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
+import CircularProgress from '@mui/material/CircularProgress';
 
+// Componentes personalizados
+import AppTheme from '../shared-theme/AppTheme';
+import ForgotPassword from './ForgotPassword';
+import ColorModeSelect from '../shared-theme/ColorModeSelect';
+import { GoogleIcon, XIcon } from './CustomIcons';
+import { Card, SignInContainer } from './SignInStyles';
 
-const Card = styled(MuiCard)(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  width: '90%',            // Ancho relativo para móviles
-  maxWidth: '450px',       // Ancho máximo para desktop
-  padding: theme.spacing(3),
-  gap: theme.spacing(2),
-  boxShadow:
-    'hsla(220, 30%, 5%, 0.05) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.05) 0px 15px 35px -5px',
-  ...theme.applyStyles('dark', {
-    boxShadow:
-      'hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px',
-  }),
-}));
-
-const SignInContainer = styled(Stack)(({ theme }) => ({
-  height: '100vh', // Altura completa de la ventana
-  width: '100%', // Ancho completo
-  padding: theme.spacing(2),
-  display: 'flex',
-  position: 'absolute',
-  alignItems: 'center', // Centra verticalmente
-  justifyContent: 'center', // Centra horizontalmente
-  top: '0px',    //Esto me funcionó para centrarlo, no lo quiten 
-  left: '0px',  
-  '&::before': {
-    content: '""',
-    display: 'block',
-    position: 'absolute',
-    zIndex: -1,
-    inset: 0,
-    backgroundImage:
-      'radial-gradient(ellipse at 50% 50%, hsl(210, 100%, 97%), hsl(0, 0%, 100%))',
-    backgroundRepeat: 'no-repeat',
-    ...theme.applyStyles('dark', {
-      backgroundImage:
-        'radial-gradient(at 50% 50%, hsla(210, 100%, 16%, 0.5), hsl(220, 30%, 5%))',
-    }),
-  },
-}));
+// Terceros
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from 'jwt-decode';
 
 export default function SignIn(props) {
   const [emailError, setEmailError] = React.useState(false);
@@ -74,8 +32,9 @@ export default function SignIn(props) {
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [open, setOpen] = React.useState(false);
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [serverError, setServerError] = React.useState('');
   const navigate = useNavigate();
-
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -85,16 +44,61 @@ export default function SignIn(props) {
     setOpen(false);
   };
 
-  const handleSubmit = (event) => {
-    if (emailError || passwordError) {
-      event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    
+    // Validar inputs antes de continuar
+    if (!validateInputs()) {
       return;
     }
+    
+    setIsLoading(true);
+    setServerError('');
+    
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const userData = {
+      correo: data.get('email'),
+      contraseña: data.get('password'),
+    };
+    
+    try {
+      const response = await fetch('https://softcial-reports-endpoint.onrender.com/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userData)
+      });
+      
+      const result = await response.json();
+      
+      if (!response.ok) {
+        if (response.status === 401) {
+          // Credenciales inválidas
+          setServerError('Correo o contraseña incorrectos. Intente nuevamente.');
+        } else if (response.status === 403 && result.requiresVerification) {
+          // Cuenta no verificada
+          setServerError('Su cuenta no ha sido verificada. Por favor revise su correo electrónico.');
+        } else {
+          // Otro error
+          setServerError(result.error || 'Ocurrió un error al iniciar sesión. Intente más tarde.');
+        }
+      } else {
+        // Login exitoso
+        console.log('Login exitoso:', result);
+        
+        // Guardar datos del usuario en localStorage o estado global
+        localStorage.setItem('userInfo', JSON.stringify(result.usuario));
+        
+        // Redirigir al usuario a la página principal
+        navigate('/home');
+      }
+    } catch (error) {
+      console.error('Error al conectar con el servidor:', error);
+      setServerError('No se pudo conectar con el servidor. Verifique su conexión a internet.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const validateInputs = () => {
@@ -105,7 +109,7 @@ export default function SignIn(props) {
 
     if (!email.value || !/\S+@\S+\.\S+/.test(email.value)) {
       setEmailError(true);
-      setEmailErrorMessage('Please enter a valid email address.');
+      setEmailErrorMessage('Por favor, ingrese una dirección de correo válida.');
       isValid = false;
     } else {
       setEmailError(false);
@@ -114,7 +118,7 @@ export default function SignIn(props) {
 
     if (!password.value || password.value.length < 6) {
       setPasswordError(true);
-      setPasswordErrorMessage('Password must be at least 6 characters long.');
+      setPasswordErrorMessage('La contraseña debe tener al menos 6 caracteres.');
       isValid = false;
     } else {
       setPasswordError(false);
@@ -123,11 +127,13 @@ export default function SignIn(props) {
 
     return isValid;
   };
+  
   return (
     <AppTheme {...props}>
       <CssBaseline enableColorScheme />
       <SignInContainer direction="column" justifyContent="space-between">
-      <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
+        <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
+        
         <Card variant="outlined">
           <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <Typography
@@ -140,8 +146,10 @@ export default function SignIn(props) {
             <img
               src="https://montenegrodanielfelipe.com/softcial/svg/softcial.svg"
               style={{ width: '100px', height: 'auto' }}
+              alt="Softcial Logo"
             />
           </Box>
+          
           <Box
             component="form"
             onSubmit={handleSubmit}
@@ -153,6 +161,12 @@ export default function SignIn(props) {
               gap: 2,
             }}
           >
+            {serverError && (
+              <Typography color="error" align="center">
+                {serverError}
+              </Typography>
+            )}
+            
             <FormControl>
               <FormLabel htmlFor="email">Email</FormLabel>
               <TextField
@@ -170,6 +184,7 @@ export default function SignIn(props) {
                 color={emailError ? 'error' : 'primary'}
               />
             </FormControl>
+            
             <FormControl>
               <FormLabel htmlFor="password">Contraseña</FormLabel>
               <TextField
@@ -187,19 +202,22 @@ export default function SignIn(props) {
                 color={passwordError ? 'error' : 'primary'}
               />
             </FormControl>
+            
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Recuerdame"
             />
-            <ForgotPassword open={open} handleClose={handleClose} />
+            
             <Button
               type="submit"
               fullWidth
               variant="contained"
-              onClick={validateInputs}
+              disabled={isLoading}
+              startIcon={isLoading ? <CircularProgress size={20} /> : null}
             >
-              Iniciar Sesión
+              {isLoading ? 'Iniciando sesión...' : 'Iniciar Sesión'}
             </Button>
+            
             <Link
               component="button"
               type="button"
@@ -209,20 +227,23 @@ export default function SignIn(props) {
             >
               ¿Necesitas ayuda?
             </Link>
+            
             <ForgotPassword open={open} handleClose={handleClose} />
           </Box>
-          <Divider></Divider>
+          
+          <Divider />
+          
           <Box sx={{ display: 'flex', gap: 2 }}>
-          <>
-            </>
             <GoogleLogin
-                onSuccess={(credentialResponse) => {
-                  console.log("Login Success");
-                  console.log(credentialResponse);
-                  console.log(jwtDecode(credentialResponse.credential));
-                  navigate("/home");
-                }}
-                onError={() => console.log("Login Failed")} />
+              onSuccess={(credentialResponse) => {
+                console.log("Login Success");
+                console.log(credentialResponse);
+                console.log(jwtDecode(credentialResponse.credential));
+                navigate("/home");
+              }}
+              onError={() => console.log("Login Failed")} 
+            />
+            
             <Typography sx={{ textAlign: 'center' }}>
               ¿No tienes una cuenta?{' '}
               <Link
