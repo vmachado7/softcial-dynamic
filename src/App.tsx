@@ -11,6 +11,10 @@ import Profile from './profile/Profile.jsx';
 
 import Report from './blog/components/reports/Report';
 import ReportTest from './blog/components/reports/ReportTest.jsx';
+
+import AdminSignIn from './admin/AdminSignIn';
+import AdminDashboard from './admin/AdminDashboard';
+import AdminAuthGuard from './admin/AuthGuard';
 const App = () => (
   <Router>
     <Routes>
@@ -25,6 +29,15 @@ const App = () => (
       <Route path="/plans" element={<Plans />} />
       <Route path="/report/:id" element={<Report />} />
       <Route path="/ReportTest" element={<ReportTest />} />
+      <Route path="/admin" element={<AdminSignIn />} />
+        <Route 
+          path="/admin/dashboard" 
+          element={
+            <AdminAuthGuard redirectTo="/admin">
+              <AdminDashboard />
+            </AdminAuthGuard>
+          } 
+        />
     </Routes>
   </Router>
 );
