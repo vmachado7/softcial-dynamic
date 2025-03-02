@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function SitemarkIcon() {
   return (
-    <Link to="/blog">
+    <Link to="/sign-in">
       <img
         src="https://montenegrodanielfelipe.com/softcial/svg/softcial.svg"
         alt="Sitemark Icon"

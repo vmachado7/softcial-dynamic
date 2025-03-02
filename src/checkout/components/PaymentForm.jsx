@@ -18,8 +18,6 @@ import { styled } from '@mui/material/styles';
 
 import AccountBalanceRoundedIcon from '@mui/icons-material/AccountBalanceRounded';
 import CreditCardRoundedIcon from '@mui/icons-material/CreditCardRounded';
-import SimCardRoundedIcon from '@mui/icons-material/SimCardRounded';
-import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   border: '1px solid',
@@ -87,134 +85,56 @@ const FormGrid = styled('div')(() => ({
 
 export default function PaymentForm() {
   const [paymentType, setPaymentType] = React.useState('creditCard');
-  const [cardNumber, setCardNumber] = React.useState('');
-  const [cvv, setCvv] = React.useState('');
-  const [expirationDate, setExpirationDate] = React.useState('');
+  const [phoneNumber, setPhoneNumber] = React.useState('');
+  const [clientName, setClientName] = React.useState('');
 
-  const handlePaymentTypeChange = (event) => {
-    setPaymentType(event.target.value);
-  };
+const handlePhoneNumberChange = (event) => {
+  const value = event.target.value.replace(/\D/g, ''); // Elimina caracteres no numéricos
+  if (value.length <= 10) {
+    setPhoneNumber(value);
+  }
+};
+const handleClientNameChange = (event) => {
+  const value = event.target.value.replace(/[^a-zA-ZáéíóúÁÉÍÓÚñÑ\s]/g, ''); // Permite solo letras y espacios
+  setClientName(value);
+};
 
-  const handleCardNumberChange = (event) => {
-    const value = event.target.value.replace(/\D/g, '');
-    const formattedValue = value.replace(/(\d{4})(?=\d)/g, '$1 ');
-    if (value.length <= 16) {
-      setCardNumber(formattedValue);
-    }
-  };
-
-  const handleCvvChange = (event) => {
-    const value = event.target.value.replace(/\D/g, '');
-    if (value.length <= 3) {
-      setCvv(value);
-    }
-  };
-
-  const handleExpirationDateChange = (event) => {
-    const value = event.target.value.replace(/\D/g, '');
-    const formattedValue = value.replace(/(\d{2})(?=\d{2})/, '$1/');
-    if (value.length <= 4) {
-      setExpirationDate(formattedValue);
-    }
+  const handlePaymentClick = () => {
+    window.open(
+      "https://pasarela-pagos-azure.vercel.app/",
+      "_blank"
+    );
   };
 
   return (
-    <Stack spacing={{ xs: 3, sm: 6 }} useFlexGap>
+    <Stack spacing={{ xs: 3, sm: 0 }} useFlexGap>
       <FormControl component="fieldset" fullWidth>
         <RadioGroup
           aria-label="Payment options"
           name="paymentType"
           value={paymentType}
-          onChange={handlePaymentTypeChange}
-          sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', sm: 'row' },
-            gap: 2,
-          }}
         >
-          <Card selected={paymentType === 'creditCard'}>
-            <CardActionArea
-              onClick={() => setPaymentType('creditCard')}
-              sx={{
-                '.MuiCardActionArea-focusHighlight': {
-                  backgroundColor: 'transparent',
-                },
-                '&:focus-visible': {
-                  backgroundColor: 'action.hover',
-                },
-              }}
-            >
-              <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                <CreditCardRoundedIcon
-                  fontSize="small"
-                  sx={[
-                    (theme) => ({
-                      color: 'grey.400',
-                      ...theme.applyStyles('dark', {
-                        color: 'grey.600',
-                      }),
-                    }),
-                    paymentType === 'creditCard' && {
-                      color: 'primary.main',
-                    },
-                  ]}
-                />
-                <Typography sx={{ fontWeight: 'medium' }}>Datos</Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
         </RadioGroup>
       </FormControl>
       {paymentType === 'creditCard' && (
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
           <PaymentContainer>
             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-              <Typography variant="subtitle2">Tarjeta de Credito</Typography>
+              <Typography variant="subtitle2">Haga click en el siguiente enlace para completar su pago por Mercado Pago:</Typography>
               <CreditCardRoundedIcon sx={{ color: 'text.secondary' }} />
-            </Box>
-            <SimCardRoundedIcon
-              sx={{
-                fontSize: { xs: 48, sm: 56 },
-                transform: 'rotate(90deg)',
-                color: 'text.secondary',
-              }}
-            />
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                width: '100%',
-                gap: 2,
-              }}
-            >
-              <FormGrid sx={{ flexGrow: 1 }}>
-                <FormLabel htmlFor="card-number" required>
-                  Numero de Tarjeta
-                </FormLabel>
-                <OutlinedInput
-                  id="card-number"
-                  autoComplete="card-number"
-                  placeholder="0000 0000 0000 0000"
-                  required
-                  size="small"
-                  value={cardNumber}
-                  onChange={handleCardNumberChange}
+              <Box
+                component="button"
+                onClick={handlePaymentClick}
+                sx={{
+                  border: "none",
+                  background: "none",
+                  padding: 0,
+                  cursor: "pointer",
+                  "& img": { width: "400px", height: "auto" }}}>
+                <img src="https://woocommerce.com/wp-content/uploads/2021/05/fb-mercado-pago-v2@2x.png" 
+                  alt="Pagar con Mercado Pago" 
                 />
-              </FormGrid>
-              <FormGrid sx={{ maxWidth: '20%' }}>
-                <FormLabel htmlFor="cvv" required>
-                  CVV
-                </FormLabel>
-                <OutlinedInput
-                  id="cvv"
-                  autoComplete="CVV"
-                  placeholder="123"
-                  required
-                  size="small"
-                  value={cvv}
-                  onChange={handleCvvChange}
-                />
-              </FormGrid>
+              </Box>
             </Box>
             <Box sx={{ display: 'flex', gap: 2 }}>
               <FormGrid sx={{ flexGrow: 1 }}>
@@ -223,24 +143,26 @@ export default function PaymentForm() {
                 </FormLabel>
                 <OutlinedInput
                   id="card-name"
-                  autoComplete="card-name"
+                  autoComplete="name"
                   placeholder="Hernando Rodriguez"
                   required
                   size="small"
+                  value={clientName}
+                  onChange={handleClientNameChange}
                 />
               </FormGrid>
               <FormGrid sx={{ flexGrow: 1 }}>
                 <FormLabel htmlFor="card-expiration" required>
-                  Fecha de Expiración
+                  Numero de Telefono
                 </FormLabel>
                 <OutlinedInput
                   id="card-expiration"
                   autoComplete="card-expiration"
-                  placeholder="MM/YY"
+                  placeholder="3223620938"
                   required
                   size="small"
-                  value={expirationDate}
-                  onChange={handleExpirationDateChange}
+                  value={phoneNumber}
+                  onChange={handlePhoneNumberChange}
                 />
               </FormGrid>
             </Box>

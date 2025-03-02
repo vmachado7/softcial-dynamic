@@ -10,9 +10,13 @@ export default function Landing() {
         <>
             <GoogleLogin
                 onSuccess={(credentialResponse) => {
-                    console.log("Login Success")
-                    console.log(credentialResponse)
-                    console.log(jwtDecode(credentialResponse.credential))
+                    /*console.log("Login Success")*/
+                    /*console.log(credentialResponse)*/
+                    
+
+                    console.log(jwtDecode(credentialResponse.family_name))
+                    console.log("pain")
+
                     navigate("/home")
                 }}
                 onError={() => console.log("Login Failed")} />

@@ -70,7 +70,7 @@ export default function UserProfile(props) {
         <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
         <Card variant="outlined">
           <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 2 }}>
-            <IconButton href="/home">
+            <IconButton href="/sign-up">
               <ArrowBackIcon />
             </IconButton>
             <Typography component="h1" variant="h4">

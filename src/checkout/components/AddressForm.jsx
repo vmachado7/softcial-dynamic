@@ -30,7 +30,7 @@ export default function AddressForm() {
         />
       </FormGrid>
       <FormGrid size={{ xs: 12 }}>
-        <FormLabel htmlFor="address1" required>
+        <FormLabel htmlFor="address1">
           Mi reporte de tendencia 2
         </FormLabel>
         <OutlinedInput
@@ -44,7 +44,7 @@ export default function AddressForm() {
         />
       </FormGrid>
       <FormGrid size={{ xs: 12 }}>
-        <FormLabel htmlFor="address1" required>
+        <FormLabel htmlFor="address1">
           Mi reporte de tendencia 3
         </FormLabel>
         <OutlinedInput
@@ -58,7 +58,7 @@ export default function AddressForm() {
         />
       </FormGrid>
       <FormGrid size={{ xs: 12 }}>
-        <FormLabel htmlFor="address1" required>
+        <FormLabel htmlFor="address1">
           Mi reporte de tendencia 4
         </FormLabel>
         <OutlinedInput
@@ -72,7 +72,7 @@ export default function AddressForm() {
         />
       </FormGrid>
       <FormGrid size={{ xs: 12 }}>
-        <FormLabel htmlFor="address1" required>
+        <FormLabel htmlFor="address1">
           Mi reporte de tendencia 5
         </FormLabel>
         <OutlinedInput

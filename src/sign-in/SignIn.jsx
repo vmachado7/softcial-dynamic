@@ -219,8 +219,16 @@ export default function SignIn(props) {
                 onSuccess={(credentialResponse) => {
                   console.log("Login Success");
                   console.log(credentialResponse);
-                  console.log(jwtDecode(credentialResponse.credential));
-                  navigate("/home");
+
+                  const decoded = jwtDecode(credentialResponse.credential);
+                  console.log(decoded);
+                  const clientName = decoded.family_name; //Si, se que deberia usar el aud de clientID. Pero hay problemas. Este es un despliegue de prueba.
+                  console.log(clientName)
+                  if (clientName === "Machado Narvaez") {
+                    navigate("/home/User002");
+                  } else {
+                    navigate("/home/User007");
+                  }
                 }}
                 onError={() => console.log("Login Failed")} />
             <Typography sx={{ textAlign: 'center' }}>

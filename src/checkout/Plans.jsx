@@ -3,6 +3,7 @@ import { Box, Button, Card, CardContent, Typography, Dialog, DialogTitle, Dialog
 import { styled } from '@mui/material/styles';
 import AppTheme from '../shared-theme/AppTheme';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
+import { useNavigate } from 'react-router-dom';
 
 // Styled Card to match the sign-up page design
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -23,6 +24,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
       'hsla(220, 30%, 5%, 0.5) 0px 5px 15px 0px, hsla(220, 25%, 10%, 0.08) 0px 15px 35px -5px',
   }),
 }));
+
 
 const PaymentContainer = styled(Stack)(({ theme }) => ({
   height: '100vh',
@@ -57,11 +59,6 @@ const PaymentContainer = styled(Stack)(({ theme }) => ({
 export default function PaymentPlan(props) {
   const [open, setOpen] = useState(false);
 
-  const handleCancelSubscription = () => {
-    console.log('Subscription canceled');
-    setOpen(false);
-  };
-
   return (
     <AppTheme {...props}>
       <PaymentContainer direction="column" justifyContent="space-between">
@@ -69,18 +66,18 @@ export default function PaymentPlan(props) {
         
         <StyledCard variant="outlined">
           <Typography variant="h4" sx={{ textAlign: 'center' }}>
-            Your Payment Plan
+            Tu plan de pagos
           </Typography>
 
           <CardContent>
             <Typography variant="body1">
-              <strong>Plan:</strong> Premium
+              <strong>Plan:</strong> Regular
             </Typography>
             <Typography variant="body1">
-              <strong>Price:</strong> $9.99/month
+              <strong>Precio:</strong> $39.990,00/mensaulmente
             </Typography>
             <Typography variant="body1">
-              <strong>Next Billing Date:</strong> March 15, 2025
+              <strong>Proxima Facturación:</strong> Abril 1, 2025
             </Typography>
 
             <Button
@@ -90,23 +87,23 @@ export default function PaymentPlan(props) {
               sx={{ mt: 3 }}
               onClick={() => setOpen(true)}
             >
-              Cancel Subscription
+              Cancelar Susbscripcion
             </Button>
           </CardContent>
         </StyledCard>
 
         {/* Confirmation Dialog */}
         <Dialog open={open} onClose={() => setOpen(false)}>
-          <DialogTitle>Confirm Cancellation</DialogTitle>
+          <DialogTitle>¿De verdad quieres cancelar?</DialogTitle>
           <DialogContent>
             <Typography>
-              Are you sure you want to cancel your subscription? This action cannot be undone.
+              Esta acción cancela tu subscripción, no recibiras reportes una vez termine el mes.
             </Typography>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => setOpen(false)}>Keep Subscription</Button>
-            <Button onClick={handleCancelSubscription} color="error" variant="contained">
-              Cancel Subscription
+            <Button onClick={() => setOpen(false)}>No, continuar con mi plan actual</Button>
+            <Button onClick={useNavigate('/home/User002')} color="error" variant="contained">
+              Si, cancela mi subscripción
             </Button>
           </DialogActions>
         </Dialog>

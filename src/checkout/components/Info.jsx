@@ -11,7 +11,7 @@ const products = [
   {
     name: 'Plan de 5 reportes de tendencia generados a diario por 1 mes.',
     desc: 'Se renovara el primer dia de cada mes.',
-    price:'$30.925',
+    price:'$33.605',
   },
   {
     name: 'Plan de Apoyo por 1 mes',

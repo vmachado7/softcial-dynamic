@@ -23,51 +23,12 @@ import Link from '@mui/material/Link';
 
 const cardData = [
   {
-    img: 'https://media.cnn.com/api/v1/images/stellar/prod/gettyimages-1242375600.jpg?c=16x9&q=w_1280,c_fill',
-    tag: 'Figura Política',
-    title: 'Gustavo Petro',
+    img: 'https://img.freepik.com/premium-photo/question-mark-concept-science-technology-questions-answers-internet_700226-1714.jpg',
+    tag: 'Bienvenido/a!',
+    title: 'Aun no tienes informes generados!',
     description:
-      'Gustavo Francisco Petro Urrego es un político, economista y actual presidente de Colombia desde el 7 de agosto de 2022.',
-    authors: [
-      { name: 'Reporte Listo', avatar: 'https://static-00.iconduck.com/assets.00/checkmark-running-icon-2048x2048-8081bf4v.png' },],
-  },
-
-  {
-    img: 'https://www.iagua.es/sites/default/files/styles/thumbnail-830x455/public/donald-trump-wikipedia_0.jpg?itok=7JCPwkYk',
-    tag: 'Figura Política',
-    title: 'Danald Trump',
-    description:
-      'Donald John Trump es un empresario, personalidad televisiva y político conservador​ estadounidense. Miembro del Partido Republicano, es el 47avo presidente de los Estados Unidos desde el 20 de enero de 2025.',
-    authors: [
-      { name: 'Reporte en proceso...', avatar: 'https://superstorefinder.net/support/wp-content/uploads/2018/01/orange_circles.gif' },],
-  },
-  {
-    img: 'https://media-cldnry.s-nbcnews.com/image/upload/t_fit-1240w,f_auto,q_auto:best/rockcms/2023-12/231221-hbomberguy-youtube-snip-ac-512p-ac9ddd.jpg',
-    tag: 'Influencer',
-    title: 'HbomberGuy',
-    description:
-      'Harry Brewis es un YouTuber y streamer de Twitch británico, productor de videoensayos sobre diversos temas con argumentos de posiciones políticas y económicas de izquierdas.',
-    authors: [
-      { name: 'Reporte Listo', avatar: 'https://static-00.iconduck.com/assets.00/checkmark-running-icon-2048x2048-8081bf4v.png' },],
-  },
-
-  {
-    img: 'https://www.publimetro.co/resizer/v2/YQYHMUBL4JDVXHRDKQS6VW5XIA.png?auth=0a4f4e587ea3da38014a1c79a00f50d6013398688941fb6943c0ef180e177c6a&width=1200&height=675&smart=true',
-    tag: 'Influencer',
-    title: ' Epa Colombia',
-    description:
-      'Daneidy Barrera Rojas, conocida por su apodo Epa Colombia, es una modelo, influencer y empresaria colombiana.',
-    authors: [
-      { name: 'Reporte en proceso...', avatar: 'https://superstorefinder.net/support/wp-content/uploads/2018/01/orange_circles.gif' },],
-  },
-  {
-    img: 'https://akm-img-a-in.tosshub.com/indiatoday/images/story/202412/doge-elon-musk-133335475-16x9.jpg?VersionId=0Kma2biGOtwpaXsihGz1g.RMb8SJCCI3&size=690:388',
-    tag: 'Cuerpo del Gobierno de E.E.U.U.',
-    title: 'DOGE',
-    description:
-      'El Departamento de Eficiencia Gubernamental (DOGE por sus siglas en inglés),​ es una comisión asesora presidencial de los Estados Unidos.',
-    authors: [
-      { name: 'Reporte en proceso...', avatar: 'https://superstorefinder.net/support/wp-content/uploads/2018/01/orange_circles.gif' },],
+      'Si despúes de 2 dias aun no aparecen tus informes:',
+    authors: [],
   },
 ];
 
@@ -242,184 +203,16 @@ export default function MainContent() {
                 {cardData[0].description}
               </StyledTypography>
               <Chip
-                  component={Link}
-                  href={'/report/1'}
-                  label="Ver Reporte"
-                  size="large"
-                  sx={{
-                    backgroundColor: 'transparent',
-                    border: 'none',}
-                  }/>
+                component="a"
+                href="https://montenegrodanielfelipe.com/softcial/contact/"
+                label="Contáctanos!"
+                size="large"
+                target="_blank"
+                sx={{
+                  backgroundColor: 'transparent',
+                  border: 'none',}}/>
             </SyledCardContent>
             <Author authors={cardData[0].authors} />
-          </SyledCard>
-        </Grid>
-        <Grid size={{ xs: 12, md: 6 }}>
-          <SyledCard
-            variant="outlined"
-            onFocus={() => handleFocus(1)}
-            onBlur={handleBlur}
-            tabIndex={0}
-            className={focusedCardIndex === 1 ? 'Mui-focused' : ''}
-          >
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              image={cardData[1].img}
-              aspect-ratio="16 / 9"
-              sx={{
-                borderBottom: '1px solid',
-                borderColor: 'divider',
-              }}
-            />
-            <SyledCardContent>
-              <Typography gutterBottom variant="caption" component="div">
-                {cardData[1].tag}
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                {cardData[1].title}
-              </Typography>
-              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                {cardData[1].description}
-              </StyledTypography>
-              <Chip
-                  component={Link}
-                  href={'/report/1'}
-                  label="Ver Reporte"
-                  size="large"
-                  sx={{
-                    backgroundColor: 'transparent',
-                    border: 'none',}
-                  }/>
-            </SyledCardContent>
-            <Author authors={cardData[1].authors} />
-          </SyledCard>
-        </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <SyledCard
-            variant="outlined"
-            onFocus={() => handleFocus(2)}
-            onBlur={handleBlur}
-            tabIndex={0}
-            className={focusedCardIndex === 2 ? 'Mui-focused' : ''}
-            sx={{ height: '100%' }}
-          >
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              image={cardData[2].img}
-              sx={{
-                height: { sm: 'auto', md: '50%' },
-                aspectRatio: { sm: '16 / 9', md: '' },
-              }}
-            />
-            <SyledCardContent>
-              <Typography gutterBottom variant="caption" component="div">
-                {cardData[2].tag}
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                {cardData[2].title}
-              </Typography>
-              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                {cardData[2].description}
-                </StyledTypography>
-              <Chip
-                  component={Link}
-                  href={'/report/1'}
-                  label="Ver Reporte"
-                  size="large"
-                  sx={{
-                    backgroundColor: 'transparent',
-                    border: 'none',}
-                  }/>
-            </SyledCardContent>
-            <Author authors={cardData[2].authors} />
-          </SyledCard>
-        </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Box
-            sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}
-          >
-            <SyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(5)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === 5 ? 'Mui-focused' : ''}
-              sx={{ height: '100%' }}
-            >
-              <CardMedia
-                component="img"
-                alt="green iguana"
-                image={cardData[3].img}
-                sx={{
-                  height: { sm: 'auto', md: '50%' },
-                  aspectRatio: { sm: '16 / 9', md: '' },
-                }}
-              />
-              <SyledCardContent>
-                <Typography gutterBottom variant="caption" component="div">
-                  {cardData[3].tag}
-                </Typography>
-                <Typography gutterBottom variant="h6" component="div">
-                  {cardData[3].title}
-                </Typography>
-                <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                  {cardData[3].description}
-                  </StyledTypography>
-              <Chip
-                  component={Link}
-                  href={'/report/1'}
-                  label="Ver Reporte"
-                  size="large"
-                  sx={{
-                    backgroundColor: 'transparent',
-                    border: 'none',}
-                  }/>
-            </SyledCardContent>
-              <Author authors={cardData[3].authors} />
-            </SyledCard>
-          </Box>
-        </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <SyledCard
-            variant="outlined"
-            onFocus={() => handleFocus(4)}
-            onBlur={handleBlur}
-            tabIndex={0}
-            className={focusedCardIndex === 5 ? 'Mui-focused' : ''}
-            sx={{ height: '100%' }}
-          >
-            <CardMedia
-              component="img"
-              alt="green iguana"
-              image={cardData[4].img}
-              sx={{
-                height: { sm: 'auto', md: '50%' },
-                aspectRatio: { sm: '16 / 9', md: '' },
-              }}
-            />
-            <SyledCardContent>
-              <Typography gutterBottom variant="caption" component="div">
-                {cardData[4].tag}
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                {cardData[4].title}
-              </Typography>
-              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                {cardData[4].description}
-                </StyledTypography>
-              <Chip
-                  component={Link}
-                  href={'/report/1'}
-                  label="Ver Reporte"
-                  size="large"
-                  sx={{
-                    backgroundColor: 'transparent',
-                    border: 'none',}
-                  }/>
-            </SyledCardContent>
-            <Author authors={cardData[4].authors} />
           </SyledCard>
         </Grid>
       </Grid>

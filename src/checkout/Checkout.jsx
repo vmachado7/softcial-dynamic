@@ -49,7 +49,7 @@ export default function Checkout(props) {
   const navigate = useNavigate();
 
   const handleClick = () => {
-  navigate("/home"); 
+  navigate("/home/User007"); 
 };
   return (
     <AppTheme {...props}>
@@ -95,7 +95,7 @@ export default function Checkout(props) {
               maxWidth: 500,
             }}
           >
-            <Info totalPrice={activeStep >= 2 ? '$36.800' : '$30.925'} />
+            <Info totalPrice={activeStep >= 2 ? '$39.990' : '$33.605'} />
           </Box>
         </Grid>
         <Grid
