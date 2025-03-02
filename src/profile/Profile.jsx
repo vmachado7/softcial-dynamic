@@ -42,7 +42,7 @@ const ProfileContainer = styled(Stack)(({ theme }) => ({
   top: '0px',
   left: '0px',
   justifyContent: 'center',
-  padding: theme.spacing(2),
+  // padding: theme.spacing(2),
   [theme.breakpoints.up('sm')]: {
     padding: theme.spacing(4),
   },
