@@ -1,47 +1,55 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, ReactElement } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Box, CircularProgress, Typography } from '@mui/material';
 import ApiService from './services/ApiService';
 
-/**
- * Componente protector para rutas de administrador
- * @param {Object} props - Props del componente
- * @param {React.ReactNode} props.children - Elementos hijos que se renderizarán si el usuario está autenticado
- * @param {string} props.redirectTo - Ruta a la que redirigir si el usuario no está autenticado
- * @returns {React.ReactNode}
- */
-export function AdminAuthGuard({ children, redirectTo = '/admin' }) {
+interface AdminAuthGuardProps {
+  children: ReactElement;
+  redirectTo?: string;
+}
+
+// Define type for admin check response
+interface AdminCheckResponse {
+  isAdmin: boolean;
+  nivel?: number;
+  usuario?: {
+    nombre: string;
+    correo: string;
+    verificado: boolean;
+  };
+}
+
+export function AdminAuthGuard({ 
+  children, 
+  redirectTo = '/admin' 
+}: AdminAuthGuardProps): ReactElement {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    // Verificar si hay un usuario autenticado
     const checkAuth = async () => {
       try {
         const userInfo = localStorage.getItem('userInfo');
         
         if (!userInfo) {
-          // No hay usuario autenticado
           navigate(redirectTo);
           return;
         }
         
         const user = JSON.parse(userInfo);
         
-        // Verificar en la API si es administrador
-        const adminCheck = await ApiService.checkAdmin(user.id);
+        // Verify in the API if the user is an administrator
+        const adminCheck = await ApiService.checkAdmin(user.id) as AdminCheckResponse;
         
         if (!adminCheck.isAdmin) {
-          // El usuario no es administrador
           navigate('/sign-in');
           return;
         }
         
-        // Usuario administrador autenticado
         setIsAuthenticated(true);
       } catch (error) {
-        console.error('Error verificando autenticación:', error);
+        console.error('Error verifying authentication:', error);
         navigate(redirectTo);
       } finally {
         setLoading(false);
@@ -70,7 +78,8 @@ export function AdminAuthGuard({ children, redirectTo = '/admin' }) {
     );
   }
 
-  return isAuthenticated ? children : null;
+  // Always return a ReactElement
+  return isAuthenticated ? children : <Box></Box>;
 }
 
 export default AdminAuthGuard;
