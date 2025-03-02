@@ -91,7 +91,7 @@ export default function SignIn(props) {
         localStorage.setItem('userInfo', JSON.stringify(result.usuario));
         
         // Redirigir al usuario a la página principal
-        navigate('/home');
+        navigate("/home/User002");
       }
     } catch (error) {
       console.error('Error al conectar con el servidor:', error);
