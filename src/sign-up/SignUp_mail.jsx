@@ -108,9 +108,9 @@ const handleSubmit = async (event) => {
                     '¡Registro exitoso! Te hemos enviado un correo de confirmación de cuenta\n\n' +
                     'Por favor, revisa tu bandeja de entrada para completar el proceso.'
                 );
-                navigate('/sign-in'); // Me falta poner un formato para autenticar correos
+                navigate('/verify'); 
             } else {
-                alert('Se completó el registro y se envió el correo de bienvenida, pero hubo un problema con el correo de confirmación. Ya puedes iniciar sesión.');
+                alert('Se completó el registro y se envió el correo de bienvenida, pero hubo un problema con el correo de confirmación.');
                 navigate('/sign-in');
             }
         } else {

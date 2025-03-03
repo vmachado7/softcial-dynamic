@@ -15,6 +15,9 @@ import ReportTest from './blog/components/reports/ReportTest.jsx';
 import AdminSignIn from './admin/AdminSignIn';
 import AdminDashboard from './admin/AdminDashboard';
 import AdminAuthGuard from './admin/AuthGuard';
+
+import VerificationPage from './verification/VerificationPage';
+
 const App = () => (
   <Router>
     <Routes>
@@ -22,6 +25,7 @@ const App = () => (
       <Route path="/sign-in" element={<SignIn />} />
       <Route path="/sign-up" element={<SignUp />} />
       <Route path="/checkout" element={<Checkout />} />
+      <Route path="/home" element={<Blog/>} />
       <Route path="/home/User007" element={<Blog/>} />
       <Route path="/home/User002" element={<BlogTest />} />
       <Route path="/landing" element={<Landing />} />
@@ -38,6 +42,7 @@ const App = () => (
             </AdminAuthGuard>
           } 
         />
+      <Route path="/verify" element={<VerificationPage />} />
     </Routes>
   </Router>
 );
