@@ -283,7 +283,7 @@ export default function MainContent() {
               </StyledTypography>
               <Chip
                   component={Link}
-                  href={'/report/1'}
+                  href={'/report/2'}
                   label="Ver Reporte"
                   size="large"
                   sx={{
@@ -324,7 +324,7 @@ export default function MainContent() {
                 </StyledTypography>
               <Chip
                   component={Link}
-                  href={'/report/1'}
+                  href={'/report/3'}
                   label="Ver Reporte"
                   size="large"
                   sx={{
@@ -368,7 +368,7 @@ export default function MainContent() {
                   </StyledTypography>
               <Chip
                   component={Link}
-                  href={'/report/1'}
+                  href={'/report/4'}
                   label="Ver Reporte"
                   size="large"
                   sx={{
@@ -410,7 +410,7 @@ export default function MainContent() {
                 </StyledTypography>
               <Chip
                   component={Link}
-                  href={'/report/1'}
+                  href={'/report/5'}
                   label="Ver Reporte"
                   size="large"
                   sx={{

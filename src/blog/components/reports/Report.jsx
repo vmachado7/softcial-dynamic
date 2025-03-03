@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Typography, Box, CircularProgress, Paper } from '@mui/material';
-import { useParams } from 'react-router-dom'; // Necesitaremos esto para obtener el ID de la URL
+import { Container, Typography, Box, CircularProgress, Paper, Button } from '@mui/material';
+import { useParams } from 'react-router-dom';
 import CssBaseline from '@mui/material/CssBaseline';
 import AppAppBar from '../AppAppBar.jsx';
 import Footer from '../Footer.jsx';
 import AppTheme from '../../../shared-theme/AppTheme.jsx';
 
 export default function Report(props) {
-  // Obtenemos el ID del reporte de la URL
   const { id } = useParams();
   
   return (
@@ -35,11 +34,10 @@ const ReportPage = ({ reportId }) => {
     const fetchInforme = async () => {
       try {
         setLoading(true);
-        console.log('Intentando obtener informe con ID:', reportId); // Para debugging
+        console.log('Intentando obtener informe con ID:', reportId);
 
         const response = await fetch(`https://softcial-reports-backend.onrender.com/api/informes/${reportId}`);
         
-        // Logging para debugging
         console.log('Status de la respuesta:', response.status);
         console.log('Headers:', Object.fromEntries(response.headers));
         
@@ -48,7 +46,7 @@ const ReportPage = ({ reportId }) => {
         }
 
         const data = await response.json();
-        console.log('Datos recibidos:', data); // Para debugging
+        console.log('Datos recibidos:', data);
 
         setInforme(data);
         setLoading(false);
@@ -69,8 +67,8 @@ const ReportPage = ({ reportId }) => {
     return (
       <Container maxWidth="md">
         <Box display="flex" justifyContent="center" alignItems="center" minHeight="50vh">
-          <CircularProgress />
-          <Typography variant="body1" sx={{ ml: 2 }}>
+          <CircularProgress sx={{ color: '#4876EF' }} />
+          <Typography variant="body1" sx={{ ml: 2, color: '#B4C0D3' }}>
             Cargando informe...
           </Typography>
         </Box>
@@ -78,16 +76,21 @@ const ReportPage = ({ reportId }) => {
     );
   }
 
-
   // Manejo de errores
   if (error) {
     return (
       <Container maxWidth="md">
-        <Paper elevation={3} sx={{ p: 4, mt: 4, backgroundColor: '#f8f9fa' }}>
+        <Paper elevation={3} sx={{ 
+          p: 4, 
+          mt: 4, 
+          backgroundColor: '#232323', 
+          borderRadius: '12px',
+          border: '1px solid #323232'
+        }}>
           <Typography variant="h6" color="error" gutterBottom>
             No se pudo cargar el informe
           </Typography>
-          <Typography variant="body1" paragraph>
+          <Typography variant="body1" paragraph sx={{ color: '#B4C0D3' }}>
             {error}
           </Typography>
           <Typography variant="body2" color="text.secondary" paragraph>
@@ -95,7 +98,10 @@ const ReportPage = ({ reportId }) => {
           </Typography>
           <Button 
             variant="contained" 
-            color="primary" 
+            sx={{ 
+              backgroundColor: '#4876EF', 
+              '&:hover': { backgroundColor: '#3A67E0' }
+            }} 
             onClick={() => window.location.reload()}
           >
             Intentar de nuevo
@@ -109,11 +115,17 @@ const ReportPage = ({ reportId }) => {
   if (!informe) {
     return (
       <Container maxWidth="md">
-        <Paper elevation={3} sx={{ p: 4, mt: 4, backgroundColor: '#f8f9fa' }}>
-          <Typography variant="h6" gutterBottom>
+        <Paper elevation={3} sx={{ 
+          p: 4, 
+          mt: 4, 
+          backgroundColor: '#232323', 
+          borderRadius: '12px',
+          border: '1px solid #323232'
+        }}>
+          <Typography variant="h6" gutterBottom sx={{ color: '#B4C0D3' }}>
             No se encontró el informe
           </Typography>
-          <Typography variant="body1">
+          <Typography variant="body1" sx={{ color: '#949494' }}>
             El informe solicitado no está disponible en este momento.
           </Typography>
         </Paper>
@@ -133,15 +145,40 @@ const ReportPage = ({ reportId }) => {
   // Renderizamos el informe
   return (
     <Container maxWidth="md">
-      <Paper elevation={3} sx={{ padding: 4, backgroundColor: '#f8f9fa' }}>
+      <Paper 
+        elevation={3} 
+        sx={{ 
+          padding: 5, 
+          backgroundColor: '#232323',
+          borderRadius: '12px',
+          boxShadow: '0px 3px 15px rgba(0, 0, 0, 0.5)',
+          border: '1px solid #323232',
+          overflow: 'hidden',
+          position: 'relative'
+        }}
+      >
+        {/* Decoración visual */}
+        <Box sx={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '4px',
+          background: 'linear-gradient(90deg, #4876EF 0%, #00D3AB 100%)'
+        }} />
+        
         {/* Identificador del informe */}
         <Typography 
           variant="overline" 
           display="block" 
           align="center"
-          sx={{ mb: 2 }}
+          sx={{ 
+            mb: 2, 
+            color: '#6B7280',
+            letterSpacing: '1.2px'
+          }}
         >
-          Informe #{informe.id}
+          INFORME #{informe.id}
         </Typography>
 
         {/* Título del informe */}
@@ -152,10 +189,12 @@ const ReportPage = ({ reportId }) => {
             gutterBottom 
             align="center"
             sx={{ 
-              color: '#1a237e',
-              fontWeight: 'bold',
-              borderBottom: '2px solid #1a237e',
-              paddingBottom: 2
+              color: '#4876EF',
+              fontWeight: '700',
+              borderBottom: '1px solid rgba(72, 118, 239, 0.3)',
+              paddingBottom: 2,
+              fontFamily: 'Roboto, sans-serif',
+              fontSize: { xs: '2rem', sm: '2.5rem', md: '2.75rem' }
             }}
           >
             {informe.titulo}
@@ -164,7 +203,12 @@ const ReportPage = ({ reportId }) => {
           <Typography 
             variant="subtitle1" 
             align="center" 
-            color="text.secondary"
+            sx={{
+              fontFamily: 'Roboto, sans-serif',
+              fontSize: '0.9rem',
+              fontStyle: 'italic',
+              color: '#949494'
+            }}
             gutterBottom
           >
             Publicado el {fechaFormateada}
@@ -179,7 +223,9 @@ const ReportPage = ({ reportId }) => {
             sx={{ 
               fontSize: '1.2rem',
               lineHeight: 1.8,
-              textAlign: 'justify'
+              textAlign: 'justify',
+              color: '#B4C0D3',
+              fontFamily: 'Roboto, sans-serif'
             }}
           >
             {informe.parrafo1}
@@ -193,7 +239,9 @@ const ReportPage = ({ reportId }) => {
             sx={{ 
               fontSize: '1.2rem',
               lineHeight: 1.8,
-              textAlign: 'justify'
+              textAlign: 'justify',
+              color: '#B4C0D3',
+              fontFamily: 'Roboto, sans-serif'
             }}
           >
             {informe.parrafo2}
