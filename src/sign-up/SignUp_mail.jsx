@@ -108,14 +108,14 @@ const handleSubmit = async (event) => {
                     '¡Registro exitoso! Te hemos enviado un correo de confirmación de cuenta\n\n' +
                     'Por favor, revisa tu bandeja de entrada para completar el proceso.'
                 );
-                navigate('/verify'); 
+                navigate('/sign-in'); 
             } else {
                 alert('Se completó el registro y se envió el correo de bienvenida, pero hubo un problema con el correo de confirmación.');
                 navigate('/sign-in');
             }
         } else {
             // Si falla el correo pero el usuario fue registrado
-            alert('Usuario registrado correctamente, pero hubo un problema al enviar los correos. Ya puedes iniciar sesión.');
+            alert('Usuario registrado correctamente, pero hubo un problema al enviar los correos..');
             navigate('/sign-in');
         }
     } catch (error) {
